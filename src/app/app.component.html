@@ -1,5 +1,14 @@
+<h1>{{title}}</h1>
+<nav>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <a mat-button routerLink="/main">Home</a>
+            <a mat-button routerLink="/rank">기록/순위</a>
+            <a mat-button routerLink=".">Matching</a>
+            <a mat-button routerLink=".">My Team</a>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
-<app-main></app-main> 
-<!-- <app-rank></app-rank> -->
-<!-- <app-login></app-login> -->
-<!-- <app-register></app-register> -->
+</nav>
+
+<router-outlet></router-outlet>
