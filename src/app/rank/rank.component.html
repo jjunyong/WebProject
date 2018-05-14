@@ -9,7 +9,7 @@
   <button mat-raised-button>팀 순위</button>
   <button mat-raised-button>개인 순위</button>
 </div>
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<button mat-raised-button [matMenuTriggerFor]="menu" color="primary">select 시즌</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item>18-1</button>
   <button mat-menu-item>17-2</button>
@@ -22,7 +22,7 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> 팀 순위 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
     </ng-container>
 
@@ -33,15 +33,20 @@
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    <ng-container matColumnDef="match_num">
+      <mat-header-cell *matHeaderCellDef> 경기수 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.match_num}} </mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    <ng-container matColumnDef="win">
+      <mat-header-cell *matHeaderCellDef> 승 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lose">
+      <mat-header-cell *matHeaderCellDef> 패 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lose}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

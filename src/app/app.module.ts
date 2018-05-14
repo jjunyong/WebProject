@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { RankComponent } from './rank/rank.component';
 import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RankComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

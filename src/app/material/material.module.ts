@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatCardModule } from '@angular/material';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
@@ -19,7 +19,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDividerModule,
     MatGridListModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    MatCardModule
   ],
   exports: [
     MatButtonModule,
@@ -28,7 +30,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDividerModule,
     MatGridListModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    MatCardModule
   ],
   declarations: []
 })

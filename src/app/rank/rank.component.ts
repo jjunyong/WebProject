@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rank.component.css']
 })
 export class RankComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'name', 'match_num', 'win','lose'];
   dataSource = ELEMENT_DATA;
   
   constructor() { }
@@ -19,29 +19,24 @@ export class RankComponent implements OnInit {
 export interface Element {
   name: string;
   position: number;
-  weight: number;
-  symbol: string;
+  match_num: number;
+  win: number;
+  lose: number;
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+  {position: 1, name: 'FCL', match_num: 33, win: 30, lose: 3},
+  {position: 2, name: 'H-Millan', match_num: 26, win: 20, lose: 6},
+  {position: 3, name: '여기가 네 안방', match_num: 31, win: 20, lose: 11},
+  {position: 4, name: '프랑슛', match_num: 22, win: 14, lose: 8},
+  {position: 5, name: '13동호회', match_num: 22, win: 13, lose: 9},
+  {position: 6, name: '14동호회', match_num: 13, win: 8, lose: 5},
+  {position: 7, name: '15동호회', match_num: 14, win: 7, lose: 7},
+  {position: 8, name: '16동호회', match_num: 15, win: 6, lose: 9},
+  {position: 9, name: '17동호회', match_num: 18, win: 8, lose: 10},
+  {position: 10, name: '18동호회', match_num: 20, win: 9, lose: 11},
+  {position: 11, name: 'Team윤석', match_num: 22, win: 7, lose: 15},
+  {position: 12, name: '호준바바팀', match_num: 24, win: 6, lose: 18},
+  {position: 13, name: 'SFC', match_num: 26, win: 5, lose: 21},
+  {position: 14, name: 'IVF', match_num: 28, win: 4, lose: 24}
 ];
