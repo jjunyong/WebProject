@@ -5,11 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import { MaterialModule } from './material/material.module';
-import { RankComponent } from './rank/rank.component';
-import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { MaterialModule } from './modules/material/material.module';
+import { RankComponent } from './components/rank/rank.component';
+import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from './services/auth.service';
+import { AppRoutingModule } from './modules/app-routing.module';
 
 
 @NgModule({
@@ -18,14 +20,16 @@ import { RegisterComponent } from './register/register.component';
     RankComponent,
     MainComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppRoutingModule
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
