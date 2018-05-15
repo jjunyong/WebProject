@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 
@@ -20,15 +21,14 @@ import { AppRoutingModule } from './modules/app-routing.module';
     RankComponent,
     MainComponent,
     LoginComponent,
-    RegisterComponent,
-    AppRoutingModule
-
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule
+    MaterialModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
