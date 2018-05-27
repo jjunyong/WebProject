@@ -14,6 +14,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './modules/app-routing.module';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule} from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
