@@ -13,11 +13,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './modules/app-routing.module';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule} from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,19 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
     RankComponent,
     MainComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
