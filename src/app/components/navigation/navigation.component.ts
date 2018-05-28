@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
+
+  // onToggleSidenav() {
+  //   this.sidenavToggle.emit();
+  // }
 
 }

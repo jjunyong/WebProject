@@ -15,6 +15,8 @@ import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -39,7 +41,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    FlexLayoutModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

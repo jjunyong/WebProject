@@ -1,32 +1,20 @@
-<nav>
-  <mat-toolbar color="primary">
-      <mat-toolbar-row>
-          <a mat-button routerLink="/main">Home</a>
-          <a mat-button routerLink="/rank">기록/순위</a>
-          <a mat-button routerLink=".">Matching</a>
-          <a mat-button routerLink=".">My Team</a>
-          <a mat-button routerLink="/login">Login</a>
-      </mat-toolbar-row>
-  </mat-toolbar>
-
-</nav>
-
-<!-- <mat-toolbar color="primary">
+<mat-toolbar color="primary">
   <div fxHide.gt-xs>
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
   <div>
-    <a routerLink="/">NG Fitness</a>
+    <a routerLink="/">Handong Matching System</a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <div fxLayout fxLayoutGap="10px" class="navigation-items">
       <a mat-button routerLink="/main">Home</a>
-          <a mat-button routerLink="/rank">기록/순위</a>
-          <a mat-button routerLink=".">Matching</a>
-          <a mat-button routerLink=".">My Team</a>
-          <a mat-button routerLink="/login">Login</a>
+      <a mat-button routerLink="/rank">기록/순위</a>
+      <a mat-button routerLink=".">Matching</a>
+      <a *ngIf="auth.isLoggedIn()" mat-button routerLink=".">My Team</a>
+      <a *ngIf="!auth.isLoggedIn()" mat-button routerLink="/login">Login</a>
+      <a *ngIf="auth.isLoggedIn()" mat-button (click)="auth.logout()">Logout</a>
     </div>
   </div>
-</mat-toolbar> -->
+</mat-toolbar>

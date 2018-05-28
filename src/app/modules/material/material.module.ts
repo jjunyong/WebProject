@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { MatButtonModule, MatInputModule, MatCardModule } from '@angular/material';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule} from '@angular/material/table';
-import {MatMenuModule} from '@angular/material/menu';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   imports: [
@@ -21,7 +22,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTableModule,
     MatMenuModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatSidenavModule
   ],
   exports: [
     MatButtonModule,
@@ -32,7 +35,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTableModule,
     MatMenuModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatSidenavModule
   ],
   declarations: []
 })
