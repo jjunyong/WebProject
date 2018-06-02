@@ -11,7 +11,7 @@
     <div fxLayout fxLayoutGap="10px" class="navigation-items">
       <a mat-button routerLink="/main">Home</a>
       <a mat-button routerLink="/rank">기록/순위</a>
-      <a mat-button routerLink=".">Matching</a>
+      <a mat-button routerLink="/matching">Matching</a>
       <a mat-button routerLink="notice">공지사항</a>
       <a *ngIf="auth.isLoggedIn()" mat-button routerLink=".">My Team</a>
       <a *ngIf="!auth.isLoggedIn()" mat-button routerLink="/login">Login</a>

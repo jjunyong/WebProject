@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatButtonModule, MatInputModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatCardModule, MatSelectModule, MatStepperModule, MatDatepickerModule, MatSnackBarModule, MatCheckboxModule, MatNativeDateModule } from '@angular/material';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -30,7 +30,13 @@ import {MatSortModule} from '@angular/material/sort';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -45,7 +51,13 @@ import {MatSortModule} from '@angular/material/sort';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
   declarations: []
 })

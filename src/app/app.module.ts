@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule,ReactiveFormsModule} from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 
@@ -28,6 +28,15 @@ import { NoticeComponent } from './components/notice/notice.component';
 import { AuthService } from './services/auth.service';
 import { NoticeService } from './services/notice.service';
 import { RankService } from './services/rank.service';
+import { CreateMatchComponent } from './components/matching/create-match/create-match.component';
+import { MAT_DATE_LOCALE, MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatchService } from './services/match.service';
+import { MatchingDetailComponent } from './components/matching/matching-detail/matching-detail.component';
+import { MatchingComponent } from './components/matching/matching.component';
+
+
 
 @NgModule({
   declarations: [
@@ -36,14 +45,18 @@ import { RankService } from './services/rank.service';
     MainComponent,
     LoginComponent,
     RegisterComponent,
+    MatchingComponent,
+    MatchingDetailComponent,
     NavigationComponent,
     SidenavComponent,
     FooterComponent,
-    NoticeComponent
+    NoticeComponent,
+    CreateMatchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -56,8 +69,12 @@ import { RankService } from './services/rank.service';
   providers: [
     AuthService,
     NoticeService,
-    RankService
+    RankService,
+   {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+   {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
+    MatchService 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

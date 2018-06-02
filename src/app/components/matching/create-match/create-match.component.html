@@ -1,0 +1,82 @@
+<!-- <button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button> -->
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>나의 팀 선택</ng-template>
+      <mat-form-field>
+          <mat-select [(ngModel)] = "selectedTeam" [formControl]="teamControl" required>
+            <!-- <mat-option>--</mat-option> -->
+            <mat-option *ngFor="let team of myTeams" [value]="team">
+              {{team.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="teamControl.hasError('required')">팀을 선택하세요!</mat-error>
+        </mat-form-field>
+      <div class="buttons">
+        <button color="primary" mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>경기날짜 및 시간</ng-template>
+      <mat-form-field>
+          <input  matInput [formControl]="selectedDate" [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+        <h4>Kick off 시간</h4>
+        <input matInput [formControl]="selectedStartTime" type="time" name="usr_time">
+        <h4>끝나는 시간</h4>
+        <input matInput [formControl]="selectedEndTime" type="time" name="usr_time">
+      <div class="buttons">
+        <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+        <button color="primary" mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>구장 선택 & 예약 체크</ng-template>
+        <mat-form-field>
+          <mat-select [(ngModel)] = "selectedField" [formControl]="fieldControl" required>
+            <!-- <mat-option>--</mat-option> -->
+            <mat-option *ngFor="let field of fields" [value]="field">
+              {{field}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="fieldControl.hasError('required')">구장을 선택하세요!</mat-error>
+        </mat-form-field>
+        <section class="example-section">
+          <!-- <mat-checkbox class="example-margin" [change]="valueChange()">구장 예약</mat-checkbox> -->
+        </section>
+        <div class="buttons">
+          <button color="primary" mat-raised-button matStepperPrevious>Back</button>
+          <button color="primary" mat-raised-button matStepperNext>Next</button>
+        </div>
+      </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+    <div class="buttons">
+      <button color="primary" (click)="createMatch()" mat-raised-button routerLink="/matching" >완료</button>
+      <button color="primary" mat-raised-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+<!-- 
+{{selectedTeam}}
+{{selectedField}}
+{{selectedTime.value}} -->
+<!-- {{selectedDate.value}} -->
+<!-- 
+<mdb-time-picker [buttonLabel]="'Done'" [twelvehour]="true" [darktheme]="false" [placeholder]="'Selected time'" [label]="'Light
+version, 12hours'" [showClock]="true" [ngModel]="lightClock"></mdb-time-picker>
+
+<mdb-time-picker [buttonLabel]="'Done'" [twelvehour]="false" [darktheme]="true"
+[placeholder]="'Selected time'" [label]="'Dark version, 24hours'" [ngModel]="darkClock"></mdb-time-picker> -->
+        
