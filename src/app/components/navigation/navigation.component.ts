@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 
@@ -8,14 +8,15 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  @Output() sidenavToggle = new EventEmitter<void>();
 
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  // onToggleSidenav() {
-  //   this.sidenavToggle.emit();
-  // }
+  onToggleSidenav() {
+    this.sidenavToggle.emit();
+  }
 
 }

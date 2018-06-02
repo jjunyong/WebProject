@@ -1,0 +1,40 @@
+<div *ngIf="notice">
+
+  <h2>{{ notice.data.title | uppercase }} Details</h2>
+  <div>
+    <span>id: </span>{{notice.id}}</div>
+  <div>
+    <label>title:
+      <p>{{notice.data.title}}</p>
+    </label>
+  </div>
+  <div>
+    <label>timestamp:
+      <p>{{notice.data.timestamp}}</p>
+    </label>
+  </div>
+  <div>
+    <label>content:
+      <p>{{notice.data.content}}</p>
+    </label>
+  </div>
+</div>
+
+<div>
+  <h2>공지사항</h2>
+  <mat-table [dataSource]="notices">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a href="/notice/{{element.id}}">{{element.data.title}}</a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="timestamp">
+      <mat-header-cell *matHeaderCellDef> TimeStamp </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.data.timestamp}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>

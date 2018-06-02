@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RankService } from '../../services/rank.service';
+import { MatTableDataSource, MatSort } from '@angular/material';
+
 
 @Component({
   selector: 'app-rank',
@@ -6,12 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rank.component.css']
 })
 export class RankComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'match_num', 'win', 'lose'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns = [/*'position',*/ 'name', 'match_num', 'win', 'lose'];
+  dataSource: MatTableDataSource<any>;
 
-  constructor() { }
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(public rank: RankService) {
+    this.rank.getTeams()
+      .subscribe(teams => {
+
+        this.dataSource = new MatTableDataSource(teams);
+        // this.dataSource.data.push(teams);
+        console.log(this.dataSource);
+        this.dataSource.sort = this.sort;
+
+
+      });
+  }
+
+  /**
+ * Set the sort after the view init since this component will
+ * be able to query its view for the initialized sort.
+ */
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   ngOnInit() {
+
   }
 
 }

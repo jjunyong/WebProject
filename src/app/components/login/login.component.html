@@ -1,8 +1,10 @@
-<div *ngIf="auth.isLoggedIn(); else showLogin">
-  <h1>Hello {{ auth.userDetails.displayName }}!</h1>
-  <button (click)="logout()">Logout</button>
+<div class="loginBody">
+  <div *ngIf="auth.isLoggedIn(); else showLogin">
+    <h1>Hello {{ auth.userDetails.displayName }}!</h1>
+    <button class="loginBtn" (click)="logout()">Logout</button>
+  </div>
+  <ng-template #showLogin>
+    <p>Please login.</p>
+    <button class="loginBtn loginBtn--google" (click)="login()">Login with Google</button>
+  </ng-template>
 </div>
-<ng-template #showLogin>
-  <p>Please login.</p>
-  <button (click)="login()">Login with Google</button>
-</ng-template>

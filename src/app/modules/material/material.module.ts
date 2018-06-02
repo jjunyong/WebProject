@@ -10,6 +10,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatSortModule} from '@angular/material/sort';
+
+
 
 @NgModule({
   imports: [
@@ -24,7 +28,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatCardModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule,
+    MatSortModule
   ],
   exports: [
     MatButtonModule,
@@ -37,7 +43,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatCardModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule,
+    MatSortModule
   ],
   declarations: []
 })
