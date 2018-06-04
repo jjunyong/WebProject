@@ -1,0 +1,109 @@
+<h1 class="mat-h1"></h1>
+<div class="flex-container">
+<div *ngFor="let Element of element_data" >
+<mat-card class="example-card">
+  <mat-card-header>
+      <img mat-card-avatar src="{{Element.image}}"alt="Photo of a team">
+  
+    <mat-card-title>{{Element.position}}- "{{Element.name}}"</mat-card-title>
+    <mat-card-subtitle>승률: {{Element.win}}/{{Element.match_num}}  </mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+   <nav>팀원1- 학번:213, 이름: 떙떙떙</nav>
+   <nav>팀원2- 학번:212, 이름: 랄라라</nav>
+   <nav>팀원3- 학번:211, 이름: 딘동댕</nav>
+   <nav>팀원4- 학번:212, 이름: 어  </nav>
+   <nav>팀원5- 학번:214, 이름: 음</nav>
+   <nav>팀원6- 학번:215, 이름: 그래</nav>
+        
+     
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+</div></div>
+
+<p>
+    <span matBadge="4" matBadgeOverlap="false">Text with a badge</span>
+  </p>
+  
+  <p>
+    Button with a badge on the left
+    <button mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+      Action
+    </button>
+  </p>
+  
+  <p>
+    Icon with a badge
+    <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+  </p>
+
+<h3>Basic Buttons</h3>
+<div class="button-row">
+  <button mat-button>Basic</button>
+  <button mat-button color="primary">Primary</button>
+  <button mat-button color="accent">Accent</button>
+  <button mat-button color="warn">Warn</button>
+  <button mat-button disabled>Disabled</button>
+  <a mat-button routerLink=".">Link</a>
+</div>
+
+<h3>Raised Buttons</h3>
+<div class="button-row">
+  <button mat-raised-button>Basic</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="accent">Accent</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button disabled>Disabled</button>
+  <a mat-raised-button routerLink=".">Link</a>
+</div>
+
+<h3>Icon Buttons</h3>
+<div class="button-row">
+  <button mat-icon-button>
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="primary">
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="accent">
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="warn">
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <button mat-icon-button disabled>
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+</div>
+
+<h3>Fab Buttons</h3>
+<div class="button-row">
+  <button mat-fab>Basic</button>
+  <button mat-fab color="primary">Primary</button>
+  <button mat-fab color="accent">Accent</button>
+  <button mat-fab color="warn">Warn</button>
+  <button mat-fab disabled>Disabled</button>
+  <button mat-fab>
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <a mat-fab routerLink=".">Link</a>
+</div>
+
+<h3>Mini Fab Buttons</h3>
+<div class="button-row">
+  <button mat-mini-fab>Basic</button>
+  <button mat-mini-fab color="primary">Primary</button>
+  <button mat-mini-fab color="accent">Accent</button>
+  <button mat-mini-fab color="warn">Warn</button>
+  <button mat-mini-fab disabled>Disabled</button>
+  <button mat-mini-fab>
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+  <a mat-mini-fab routerLink=".">Link</a>
+</div>

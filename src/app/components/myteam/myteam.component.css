@@ -1,0 +1,22 @@
+
+  @import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+   
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 300px;
+    margin: 19.5px;
+    text-align: left;
+    line-height: 30px;
+    font-size: 30px;
+  }
+ 
+
+  /* @import "@angular/material/prebuilt-themes/indigo-pink.css";
+  @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
