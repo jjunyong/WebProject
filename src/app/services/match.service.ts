@@ -9,6 +9,18 @@ export class MatchService {
   constructor(public afs: AngularFirestore) { }
 
 
+  getMatches() {
+    return this.afs.collection("matches")
+    .snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, data }
+      });
+    })
+  }
+
+
   get(match){
 
     return this.afs.collection("teams", ref=>ref.where('name','==',''+match.host_team))

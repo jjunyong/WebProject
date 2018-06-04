@@ -1,26 +1,26 @@
-<div>
-    <button mat-raised-button>팀 순위</button>
-    <button mat-raised-button>개인 순위</button>
-  </div>
-  
-  <!-- <button mat-raised-button [matMenuTriggerFor]="menu" color="primary">select 시즌</button>
+<!-- <div>
+  <button mat-raised-button>팀 순위</button>
+  <button mat-raised-button>개인 순위</button>
+</div> -->
+
+<!-- <button mat-raised-button [matMenuTriggerFor]="menu" color="primary">select 시즌</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>18-1</button>
     <button mat-menu-item>17-2</button>
   </mat-menu> -->
-  
-  
+
+
   <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
   
       <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
+                The actual rendered columns are set as a property on the row definition" -->
   
       <!-- Position Column -->
       <!-- <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 팀 순위 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-      </ng-container> -->
+          <mat-header-cell *matHeaderCellDef mat-sort-header> 팀 순위 </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container> -->
   
       <!-- Name Column -->
       <ng-container matColumnDef="name">

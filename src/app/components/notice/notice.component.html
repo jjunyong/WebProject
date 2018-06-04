@@ -4,13 +4,11 @@
   <div>
     <span>id: </span>{{notice.id}}</div>
   <div>
-    <label>title:
-      <p>{{notice.data.title}}</p>
+    <label>title: {{notice.data.title}}
     </label>
   </div>
   <div>
-    <label>timestamp:
-      <p>{{notice.data.timestamp}}</p>
+    <label>timestamp: {{notice.data.timestamp}}
     </label>
   </div>
   <div>
@@ -31,7 +29,7 @@
     </ng-container>
     <ng-container matColumnDef="timestamp">
       <mat-header-cell *matHeaderCellDef> TimeStamp </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.data.timestamp}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.data.timestamp | date}} </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

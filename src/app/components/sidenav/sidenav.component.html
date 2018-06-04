@@ -4,7 +4,7 @@
     <span class="nav-caption">Home</span>
   </a>
   <a mat-list-item routerLink="/rank" (click)="onClose()">
-    <mat-icon>rank</mat-icon>
+    <mat-icon>home</mat-icon>
     <span class="nav-caption">기록/순위</span>
   </a>
   <a mat-list-item routerLink="/matching" (click)="onClose()">
@@ -16,7 +16,7 @@
     <span class="nav-caption">공지사항</span>
   </a>
   <a mat-list-item routerLink="/" (click)="onClose()" *ngIf="auth.isLoggedIn()c">
-    <mat-icon>my</mat-icon>
+    <mat-icon>home</mat-icon>
     <span class="nav-caption">My Page</span>
   </a>
   <mat-list-item>

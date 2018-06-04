@@ -59,6 +59,7 @@ export class CreateMatchComponent implements OnInit {
     //   })
   }
   createMatch(){
+    console.log(this.selectedTeam);
 
     this.afs.collection("matches").add({
       host_team : this.selectedTeam.name,
