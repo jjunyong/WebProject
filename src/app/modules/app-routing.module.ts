@@ -9,7 +9,7 @@ import { NoticeComponent } from '../components/notice/notice.component';
 import { MatchingComponent } from '../components/matching/matching.component';
 import { CreateMatchComponent } from '../components/matching/create-match/create-match.component';
 import { MatchingDetailComponent } from '../components/matching/matching-detail/matching-detail.component';
-
+import { MyteamComponent } from '../components/myteam/myteam.component';
 
 const routes: Routes = [
   { path: 'rank', component: RankComponent },
@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'matching', component: MatchingComponent },
   { path: 'createMatch', component: CreateMatchComponent},
   { path: 'matchingDetail/:id', component : MatchingDetailComponent},
+  { path: 'myteam', component : MyteamComponent},
+
 ];
 
 @NgModule({

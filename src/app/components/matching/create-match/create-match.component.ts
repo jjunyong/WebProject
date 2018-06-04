@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
 // import { ENGINE_METHOD_DIGESTS } from 'constants';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-create-match',
@@ -10,14 +11,14 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class CreateMatchComponent implements OnInit {
 
-  darkClock : any;
+  darkClock: any;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   teamControl = new FormControl('', [Validators.required]);
   fieldControl = new FormControl('', [Validators.required]);
-  myTeams : any;
+  myTeams: any;
   // checked: boolean =false;
   selectedTeam;
   selectedField;
@@ -26,17 +27,17 @@ export class CreateMatchComponent implements OnInit {
   selectedDate = new FormControl(new Date());
   host_thumbnail;
 
-  fields = ["평봉 필드","히딩크 드림필드"];
+  fields = ["평봉 필드", "히딩크 드림필드"];
 
-  constructor(private afs:AngularFirestore, private _formBuilder: FormBuilder) { 
-    this.afs.collection("users").doc("dhXWN9dQMHbTynfDjwkK").collection("teams").valueChanges()
-      .subscribe((data)=>{
+  constructor(private afs: AngularFirestore,
+    private _formBuilder: FormBuilder,
+    private auth: AuthService
+  ) {
+    const uid = this.auth.userDetails.uid;
+    this.afs.collection("users").doc(uid).collection("teams").valueChanges()
+      .subscribe((data) => {
         this.myTeams = data;
-      })
-
-    
-      
-    
+      });
   }
 
   ngOnInit() {
@@ -58,17 +59,17 @@ export class CreateMatchComponent implements OnInit {
     //     console.log(data);
     //   })
   }
-  createMatch(){
+  createMatch() {
     console.log(this.selectedTeam);
 
     this.afs.collection("matches").add({
-      host_team : this.selectedTeam.name,
-      location : this.selectedField,
-      start_date : this.selectedDate.value,
-      start_time : this.selectedStartTime.value,
-      end_time : this.selectedEndTime.value,
-      thumbnail : "",
-      updated : new Date()
+      host_team: this.selectedTeam.name,
+      location: this.selectedField,
+      start_date: this.selectedDate.value,
+      start_time: this.selectedStartTime.value,
+      end_time: this.selectedEndTime.value,
+      thumbnail: "",
+      updated: new Date()
     })
   }
 

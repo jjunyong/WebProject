@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule,ReactiveFormsModule} from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 
@@ -35,6 +35,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatchService } from './services/match.service';
 import { MatchingDetailComponent } from './components/matching/matching-detail/matching-detail.component';
 import { MatchingComponent } from './components/matching/matching.component';
+import { MyteamComponent } from './components/myteam/myteam.component';
 
 
 
@@ -51,7 +52,8 @@ import { MatchingComponent } from './components/matching/matching.component';
     SidenavComponent,
     FooterComponent,
     NoticeComponent,
-    CreateMatchComponent
+    CreateMatchComponent,
+    MyteamComponent
   ],
   imports: [
     BrowserModule,
@@ -70,11 +72,11 @@ import { MatchingComponent } from './components/matching/matching.component';
     AuthService,
     NoticeService,
     RankService,
-   {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-   {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
-    MatchService 
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
+    MatchService
   ],
   bootstrap: [AppComponent],
-  schemas: [ NO_ERRORS_SCHEMA ]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
