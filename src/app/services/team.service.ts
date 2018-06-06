@@ -54,9 +54,14 @@ export class TeamService {
       match_num : 0
     });
 
+    this.afs.collection("teams").doc(id).collection("members")
+    .doc(uid).set({
+      uid: uid
+    });
+
     this.afs.collection('users').doc(uid).collection('teams').doc(id).set({
       tid : id
-    })
+    });
   }
 
   getRequest(uid){
