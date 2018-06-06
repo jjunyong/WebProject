@@ -3,6 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { MatchService } from '../../services/match.service';
 import {MatSnackBar} from '@angular/material';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 // class Team{
@@ -27,7 +28,9 @@ export class MatchingComponent implements OnInit {
 
   matches : any;
 
-  constructor(private snackBar: MatSnackBar, public afs: AngularFirestore, public matService : MatchService) {
+  constructor(private snackBar: MatSnackBar,
+    private afAuth : AngularFireAuth,
+     public afs: AngularFirestore, public matService : MatchService) {
   /*  this.afs.collection("users").doc('dhXWN9dQMHbTynfDjwkK').collection("teams").valueChanges()
       .subscribe( (data)=>{
           this.myTeams = data as Team[];
@@ -62,7 +65,7 @@ export class MatchingComponent implements OnInit {
     this.matService.get(match)
       .subscribe((data)=>{
         this.id = data[0].id;
-        console.log(this.id);
+        // console.log(this.id);
 
         this.matService.getUserId(this.id)
         .subscribe((data)=>{
@@ -71,7 +74,8 @@ export class MatchingComponent implements OnInit {
           data.forEach(
             (element)=>{
               this.afs.collection("users").doc(element.id).update({
-                matchRequest : "match request from aaa(current user_id)"
+                matchRequestFrom : this.afAuth.auth.currentUser.uid,
+                matchRequestMatch : match.id
               })
             }
           )

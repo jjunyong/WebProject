@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -37,6 +38,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
@@ -58,6 +60,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatDialogModule
   ],
   declarations: []
 })
