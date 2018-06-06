@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthService } from '../../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-matching-detail',
@@ -15,8 +16,10 @@ export class MatchingDetailComponent implements OnInit {
   result;
   text: string;
   comments: any;
-  teams: any;
+  host: any;
+  away: any;
   selectedTeam;
+  condition: boolean;
 
   constructor(public auth: AuthService,
     public afs: AngularFirestore, private route: ActivatedRoute,
@@ -28,17 +31,25 @@ export class MatchingDetailComponent implements OnInit {
       .subscribe((data) => {
         this.match = data;
         this.result = this.match.result;
+
+        this.afs.collection('teams').doc(this.match.host_id).valueChanges()
+          .subscribe((host) => this.host = host);
+        this.afs.collection('teams').doc(this.match.away_id).valueChanges()
+          .subscribe((away) => this.away = away);
+
+          console.log(this.match.isMatched);
+        console.log(this.match.result);
+        if (this.match.isMatched && this.match.result === '') {
+          this.condition = true;
+        } else {
+          this.condition = false;
+        }
       });
 
     this.afs.collection('matches').doc(id).collection('comments').valueChanges()
       .subscribe((data) => {
         this.comments = data;
       });
-    this.afs.collection('teams', ref => ref.orderBy('name', 'asc')).valueChanges()
-      .subscribe((data) => {
-        this.teams = data;
-      });
-
   }
 
   ngOnInit() {
@@ -55,11 +66,43 @@ export class MatchingDetailComponent implements OnInit {
     });
   }
 
-  change() {
+  changeStatus() {
     const id = this.route.snapshot.paramMap.get('id');
+    let winner, loser;
+    if (this.selectedTeam.tid === this.match.host_id) {
+      winner = this.match.host_id;
+      loser = this.match.away_id;
+    } else {
+      loser = this.match.host_id;
+      winner = this.match.away_id;
+    }
+
     this.afs.collection('matches').doc(id).update({
       result: this.selectedTeam.name
-    });
-  }
+    }).then(() => {
+      this.afs.collection('teams').doc(winner).ref.get()
+        .then((winnerTeam) => {
+          console.log(winnerTeam);
+          const match_num = winnerTeam.get('match_num') + 1;
+          const win = winnerTeam.get('win') + 1;
+          this.afs.collection('teams').doc(winner).update({
+            match_num: match_num,
+            win: win
+          });
 
+        });
+
+      this.afs.collection('teams').doc(loser).ref.get()
+        .then((loserTeam) => {
+          const match_num = loserTeam.get('match_num') + 1;
+          const lose = loserTeam.get('lose') + 1;
+          this.afs.collection('teams').doc(loser).update({
+            match_num: match_num,
+            lose: lose
+          });
+        });
+
+    });
+
+  }
 }

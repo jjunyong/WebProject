@@ -78,7 +78,7 @@ export class MatchingComponent implements OnInit {
 export class DialogOverviewExampleDialog2 {
 
   teamControl = new FormControl('', [Validators.required]);
-  selectedTeam = new team();
+  selectedTeam;
   myTeams = new Array();
   id;
   match;

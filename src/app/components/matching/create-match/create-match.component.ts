@@ -93,7 +93,10 @@ export class CreateMatchComponent implements OnInit {
       end_time: this.selectedEndTime.value,
       thumbnail: this.selectedTeam.thumbnail,
       updated: new Date(),
-      isMatched: false
+      isMatched: false,
+      away_team: '',
+      away_id: '',
+      result: ''
     });
   }
 

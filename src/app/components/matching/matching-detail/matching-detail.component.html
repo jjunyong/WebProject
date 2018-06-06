@@ -1,68 +1,69 @@
-  <div class="wrapper">
-    <div class="product-img">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTsZZgGqu6p_uhJ-k3P0wjKSEVNdvSRWVJOM9pcFEG8RJabIx5" height="420" width="327">
+<div class="wrapper">
+  <div class="product-img">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTsZZgGqu6p_uhJ-k3P0wjKSEVNdvSRWVJOM9pcFEG8RJabIx5" height="420"
+      width="327">
+  </div>
+  <div class="product-info">
+    <div class="product-text">
+      <h1>매치 정보</h1>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon>location_on</mat-icon>
+          구장 : {{match.location}}
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>date_range</mat-icon>
+          날짜 : {{match.start_date | date}}
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>access_time</mat-icon>
+          시간 : {{match.start_time}} ~ {{match.end_time}}
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>home</mat-icon>
+          Host 팀 : {{match.host_team}}
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>home</mat-icon>
+          Away 팀 : {{match.away_team}}
+        </mat-list-item>
+        <mat-list-item *ngIf="result; else other">
+          <mat-icon>sentiment_very_satisfied</mat-icon>
+          승팀 : {{match.result}}
+        </mat-list-item>
+        <ng-template #other>
+          <strong>*아직 경기 결과 값이 없습니다*</strong>
+        </ng-template>
+
+      </mat-list>
     </div>
-    <div class="product-info">
-      <div class="product-text">
-        <h1>매치 정보</h1>
-        <mat-list>
-          <mat-list-item>
-              <mat-icon>location_on</mat-icon>
-              구장 : {{match.location}}
-          </mat-list-item>
-          <mat-list-item>
-              <mat-icon>date_range</mat-icon>
-              날짜 : {{match.start_date | date}}
-          </mat-list-item>
-          <mat-list-item>
-              <mat-icon>access_time</mat-icon>
-              시간 : {{match.start_time}} ~ {{match.end_time}}
-          </mat-list-item>
-          <mat-list-item>
-              <mat-icon>home</mat-icon>
-              Host 팀 : {{match.host_team}}
-          </mat-list-item>
-          <mat-list-item *ngIf="match.away_team">
-                <mat-icon>home</mat-icon>
-                Away 팀 : {{match.away_team}}
-            </mat-list-item>
-          <mat-list-item *ngIf="result; else other">
-              <mat-icon>sentiment_very_satisfied</mat-icon>
-              승팀 : {{match.result}}
-          </mat-list-item>
-          <ng-template #other>
-              <strong>*아직 경기 결과 값이 없습니다*</strong>
-          </ng-template>
-          
-        </mat-list>
-      </div>
-      <div class="product-price-btn">
-      </div>
+    <div class="product-price-btn">
     </div>
   </div>
-
-  <mat-list *ngFor="let comment of comments">
-      <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4>
-    <mat-list-item>{{comment.content}}</mat-list-item>
-  </mat-list>
-
-  <div *ngIf="auth.isLoggedIn()">
-  <mat-form-field >
-    <textarea matInput [(ngModel)]= "text" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2"
-              matAutosizeMaxRows="5"></textarea>
-  </mat-form-field>
-  <button mat-raised-button  (click)="submit()">작성</button>
 </div>
 
-  <mat-form-field *ngIf="match.isMatched" >
-        <mat-select [(ngModel)] = "selectedTeam" placeholder="승자 선택">
-          <mat-option *ngFor="let team of teams" [value]="team">
-            {{ team.name }}
-          </mat-option>
-        </mat-select>
-</mat-form-field>
-<button mat-raised-button (click)="change()">확인</button>
-    
+<mat-list *ngFor="let comment of comments">
+  <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4>
+  <mat-list-item>{{comment.content}}</mat-list-item>
+</mat-list>
 
+<div *ngIf="auth.isLoggedIn()">
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="text" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+  <button mat-raised-button (click)="submit()">작성</button>
+</div>
 
-  
+<div *ngIf="condition">
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedTeam" placeholder="승자 선택">
+      <mat-option [value]="host">
+        {{ host.name }}
+      </mat-option>
+      <mat-option [value]="away">
+        {{ away.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="changeStatus()">확인</button>
+</div>
