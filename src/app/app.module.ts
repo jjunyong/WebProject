@@ -12,7 +12,7 @@ import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule } from './modules/app-routing.module';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { NavigationComponent} from './components/navigation/navigation.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -39,7 +39,7 @@ import { MyteamComponent } from './components/myteam/myteam.component';
 import { CreateTeamComponent } from './components/myteam/create-team/create-team.component';
 import { TeamDetailComponent } from './components/myteam/team-detail/team-detail.component';
 import { TeamService } from './services/team.service';
-
+import { DialogOverviewExampleDialog } from './components/navigation/navigation.component'
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { TeamService } from './services/team.service';
     MyteamComponent,
     CreateTeamComponent,
     TeamDetailComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -71,6 +72,9 @@ import { TeamService } from './services/team.service';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     FlexLayoutModule
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog
   ],
   providers: [
     AuthService,

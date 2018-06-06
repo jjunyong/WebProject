@@ -16,6 +16,8 @@
       <a *ngIf="auth.isLoggedIn()" mat-button routerLink="/myteam">My Team</a>
       <a *ngIf="!auth.isLoggedIn()" mat-button routerLink="/login">Login</a>
       <a *ngIf="auth.isLoggedIn()" style="cursor: pointer" mat-button (click)="auth.logout()">Logout</a>
+      <mat-icon *ngIf="auth.isLoggedIn()" style="cursor: pointer" (click)="pop()">notifications_active</mat-icon>
+
     </div>
   </div>
 </mat-toolbar>

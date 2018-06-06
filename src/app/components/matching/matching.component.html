@@ -1,10 +1,11 @@
-<mat-card routerLink="/matchingDetail/{{match.id}}" *ngFor="let match of matches">
+<div class="loginBody">
+<mat-card routerLink="/matchingDetail/{{match.id}}" style="cursor: pointer" *ngFor="let match of matches">
     <!-- <mat-icon matListIcon>folder</mat-icon> -->
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <img src = {{match.data.thumbnail}} mat-card-avatar>
     <h4>Host 팀 : {{match.data.host_team}}</h4>
     <div>매치 날짜 : {{match.data.start_date | date }}</div>
-    <div>매치 시간 : {{match.data.start_time }} ~ {{match.data.end_time}}</div>
+    <div>매치 시간 : {{match.data.start_time}} ~ {{match.data.end_time}}</div>
     <div>장소 : {{match.data.location}}</div>
 
     <div align="right">
@@ -15,7 +16,7 @@
 <div class="matchEnroll">
 <button routerLink="/createMatch" color="primary" mat-raised-button>매치 등록</button>
 </div>
-
+</div>
 
 
 

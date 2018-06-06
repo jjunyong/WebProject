@@ -23,7 +23,7 @@ export class MatchService {
 
   get(match){
 
-    return this.afs.collection("teams", ref=>ref.where('name','==',''+match.host_team))
+    return this.afs.collection("teams", ref=>ref.where('name','==',''+match.data.host_team))
       .snapshotChanges().map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
