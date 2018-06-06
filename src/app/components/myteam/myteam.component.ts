@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-//import { MatBadgeModule } from '@angular/material/badge';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'hammerjs';
-import { AngularFireStorage } from 'angularfire2/storage';
 import { AuthService } from '../../services/auth.service';
+import { TeamService } from '../../services/team.service';
 
 
 @Component({
@@ -15,42 +10,40 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./myteam.component.css']
 })
 export class MyteamComponent implements OnInit {
+  curerntUser;
+  teams = new Array();
 
-  element_data = ELEMENT_DATA;
   constructor(
-    private auth: AuthService
-  ) { }
+    private auth: AuthService,
+    private teamService: TeamService
+  ) {
+    this.curerntUser = this.auth.userDetails;
+  }
 
   ngOnInit() {
+    this.curerntUser = this.auth.userDetails;
+
+    if (this.curerntUser != null) {
+      this.getTeams();
+    }
+
+  }
+
+  getTeams(): void {
+    this.teamService.getMyTeams(this.curerntUser.uid)
+      .subscribe(teams => {
+        console.log(teams);
+        teams.forEach((v) => {
+          console.log(v);
+          this.teamService.getMyTeam(v.tid)
+            .subscribe(team => {
+              console.log(team);
+
+              this.teams.push(team);
+            });
+        });
+
+      });
   }
 
 }
-export interface Element {
-  name: string;
-  image: string;
-  position: number;
-  match_num: number;
-  win: number;
-  lose: number;
-
-  PERSONS: Person[];
-}
-export interface Person {
-  id: string;
-  name: string;
-
-}
-
-const PERSONS: Person[] = [
-  { id: '215', name: '팀원1' },
-  { id: '213', name: '팀원2' },
-  { id: '213', name: '팀원3' },
-  { id: '213', name: '팀원4' },
-  { id: '213', name: '팀원5' },
-  { id: '213', name: '팀원6' }
-];
-const ELEMENT_DATA: Element[] = [
-  { position: 1, image: 'https://search.pstatic.net/common?type=o&size=78x59&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F84%2F59%2F06%2F146_2845906_team_image_url_1467618027703.jpg', name: 'FCL', match_num: 33, win: 30, lose: 3, PERSONS },
-  { position: 2, image: 'https://search.pstatic.net/common?type=o&size=78x59&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F33%2F09%2F146_100303309_team_image_url_1435204280058.jpg', name: 'H-Millan', match_num: 26, win: 20, lose: 6, PERSONS },
-
-];

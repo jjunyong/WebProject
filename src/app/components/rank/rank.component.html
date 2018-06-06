@@ -10,42 +10,44 @@
   </mat-menu> -->
 
 
-  <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource" matSort>
-  
-      <!--- Note that these columns can be defined in any order.
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
-  
-      <!-- Position Column -->
-      <!-- <ng-container matColumnDef="position">
+
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="position">
           <mat-header-cell *matHeaderCellDef mat-sort-header> 팀 순위 </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
         </ng-container> -->
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 팀명 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-      </ng-container>
-  
-      <!-- Weight Column -->
-      <ng-container matColumnDef="match_num">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 경기수 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.match_num}} </mat-cell>
-      </ng-container>
-  
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="win">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 승 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="lose">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 패 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.lose}} </mat-cell>
-      </ng-container>
-  
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  </div>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 팀명 </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img src="{{element.thumbnail}}" mat-card-avatar> {{element.name}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="match_num">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 경기수 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.match_num}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="win">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 승 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lose">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 패 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lose}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

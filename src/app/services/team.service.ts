@@ -25,13 +25,7 @@ export class TeamService {
   }
 
   getMyTeam(tid: string) {
-    this.teamDoc = this.teamCollection.doc(tid);
-    return this.teamDoc.snapshotChanges().map(a => {
-      const data = a.payload.data();
-      // tslint:disable-next-line:no-shadowed-variable
-      const id = a.payload.id;
-      return { id, data };
-    });
+    return this.teamCollection.doc(tid).valueChanges();
   }
 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AngularFirestore } from 'angularfire2/firestore';
 // import { ENGINE_METHOD_DIGESTS } from 'constants';
 import { AuthService } from '../../../services/auth.service';
+import { TeamService } from '../../../services/team.service';
 
 @Component({
   selector: 'app-create-match',
@@ -18,7 +19,7 @@ export class CreateMatchComponent implements OnInit {
   thirdFormGroup: FormGroup;
   teamControl = new FormControl('', [Validators.required]);
   fieldControl = new FormControl('', [Validators.required]);
-  myTeams: any;
+  myTeams = new Array();
   // checked: boolean =false;
   selectedTeam;
   selectedField;
@@ -31,13 +32,15 @@ export class CreateMatchComponent implements OnInit {
 
   constructor(private afs: AngularFirestore,
     private _formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private teamService: TeamService
   ) {
     const uid = this.auth.userDetails.uid;
-    this.afs.collection("users").doc(uid).collection("teams").valueChanges()
-      .subscribe((data) => {
-        this.myTeams = data;
-      });
+    this.getTeams(uid);
+    // this.afs.collection("users").doc(uid).collection("teams").valueChanges()
+    //   .subscribe((data) => {
+    //     this.myTeams = data;
+    //   });
   }
 
   ngOnInit() {
@@ -59,6 +62,25 @@ export class CreateMatchComponent implements OnInit {
     //     console.log(this.host_thumbnail);
     //   })
   }
+
+  getTeams(uid): void {
+    this.teamService.getMyTeams(uid)
+      .subscribe(teams => {
+        console.log(teams);
+        teams.forEach(v => {
+          console.log(v);
+          this.teamService.getMyTeam(v.tid)
+            .subscribe(team => {
+              console.log(team);
+
+              this.myTeams.push(team);
+            });
+        });
+
+      });
+  }
+
+
   createMatch() {
     // console.log(this.selectedTeam);
 
@@ -68,7 +90,7 @@ export class CreateMatchComponent implements OnInit {
       start_date: this.selectedDate.value,
       start_time: this.selectedStartTime.value,
       end_time: this.selectedEndTime.value,
-      thumbnail: "",
+      thumbnail: this.selectedTeam.thumbnail,
       updated: new Date()
     })
   }

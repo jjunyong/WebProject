@@ -1,15 +1,15 @@
 <h1 class="mat-h1"></h1>
 <div class="flex-container">
-  <div *ngFor="let Element of element_data">
+  <div *ngFor="let team of teams">
     <mat-card class="example-card">
       <mat-card-header>
-        <img mat-card-avatar src="{{Element.image}}" alt="Photo of a team">
+        <img mat-card-avatar src="{{team.thumbnail}}" alt="Photo of a team">
 
-        <mat-card-title>{{Element.position}}- "{{Element.name}}"</mat-card-title>
-        <mat-card-subtitle>승률: {{Element.win}}/{{Element.match_num}} </mat-card-subtitle>
+        <mat-card-title>{{team.name}}</mat-card-title>
+        <mat-card-subtitle>승률: {{team.win}}/{{team.match_num}} </mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-content>
+      <!-- <mat-card-content>
         <nav>팀원1- 학번:213, 이름: 떙떙떙</nav>
         <nav>팀원2- 학번:212, 이름: 랄라라</nav>
         <nav>팀원3- 학번:211, 이름: 딘동댕</nav>
@@ -18,9 +18,9 @@
         <nav>팀원6- 학번:215, 이름: 그래</nav>
 
 
-      </mat-card-content>
+      </mat-card-content> -->
       <mat-card-actions>
-        <button routerLink="/teamdetail/" mat-button color="primary">Edit</button>
+        <button routerLink="/teamDetail/{{team.tid}}" mat-button color="primary">Edit</button>
 
       </mat-card-actions>
     </mat-card>
