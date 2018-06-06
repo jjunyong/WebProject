@@ -10,7 +10,7 @@ export class TeamService {
 
   constructor(private afs: AngularFirestore) {
     this.teamCollection = this.afs.collection<any>('teams');
-   }
+  }
 
   getMyTeams(uid) {
     return this.afs.collection('users').doc(uid).collection('teams').valueChanges();
@@ -28,16 +28,31 @@ export class TeamService {
     return this.teamCollection.doc(tid).valueChanges();
   }
 
-  addTeam(team, uid){
+  getMyTeamMember(tid: string) {
+    return this.teamCollection.doc(tid).collection('members').valueChanges();
+  }
+
+  addMember(tid, uid) {
+    this.afs.collection('teams').doc(tid).collection('members')
+      .doc(uid).set({
+        uid: uid
+      });
+    this.afs.collection('users').doc(uid).collection('teams')
+      .doc(tid).set({
+        tid: tid
+      });
+  }
+
+  addTeam(team, uid) {
     const id = this.afs.createId();
-    this.afs.collection("team").doc(id).set({
-      name : team.name,
-      thumbnail : team.thumbnail
+    this.afs.collection("teams").doc(id).set({
+      name: team.name,
+      thumbnail: team.thumbnail
     });
 
     this.afs.collection('users').doc(uid).collection('teams').doc(id).set({
       name: team.name,
-      thumbnail : team.thumbnail
+      thumbnail: team.thumbnail
     })
   }
 }

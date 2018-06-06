@@ -17,10 +17,10 @@
                 The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <!-- <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> 팀 순위 </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-        </ng-container> -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 팀 순위 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">

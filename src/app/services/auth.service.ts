@@ -73,4 +73,12 @@ export class AuthService {
     this.afAuth.auth.signOut()
       .then((res) => this.router.navigate(['/']));
   }
+
+  getUsers() {
+    return this.afs.collection('users').valueChanges();
+  }
+
+  getUser(uid) {
+    return this.afs.collection('users').doc(uid).valueChanges();
+  }
 }

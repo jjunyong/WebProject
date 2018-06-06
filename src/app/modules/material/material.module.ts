@@ -10,8 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatSortModule} from '@angular/material/sort';
+import { MatListModule } from '@angular/material/list';
+import { MatSortModule } from '@angular/material/sort';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -37,6 +38,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatButtonModule,
@@ -58,6 +60,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatAutocompleteModule
   ],
   declarations: []
 })

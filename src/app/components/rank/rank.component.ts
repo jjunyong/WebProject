@@ -9,7 +9,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
   styleUrls: ['./rank.component.css']
 })
 export class RankComponent implements OnInit {
-  displayedColumns = [/*'position',*/ 'name', 'match_num', 'win', 'lose'];
+  displayedColumns = ['position', 'name', 'match_num', 'win', 'lose'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -18,7 +18,8 @@ export class RankComponent implements OnInit {
     this.rank.getTeams()
       .subscribe(teams => {
         teams.forEach((v, i, arr) => {
-
+          arr[i].position = i + 1;
+          arr[i].match_num = arr[i].win + arr[i].lose;
         });
 
         this.dataSource = new MatTableDataSource(teams);

@@ -37,6 +37,7 @@ export class MyteamComponent implements OnInit {
           console.log(v);
           this.teamService.getMyTeam(v.tid)
             .subscribe(team => {
+              team.match_num = team.win + team.lose;
               console.log(team);
 
               this.teams.push(team);
