@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { MatchService } from '../../services/match.service';
 import {MatSnackBar} from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../services/auth.service';
 
 
 // class Team{
@@ -30,7 +31,8 @@ export class MatchingComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar,
     private afAuth : AngularFireAuth,
-     public afs: AngularFirestore, public matService : MatchService) {
+     public afs: AngularFirestore, public matService : MatchService,
+    public auth: AuthService) {
   /*  this.afs.collection("users").doc('dhXWN9dQMHbTynfDjwkK').collection("teams").valueChanges()
       .subscribe( (data)=>{
           this.myTeams = data as Team[];

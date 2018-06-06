@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-matching-detail',
@@ -16,7 +17,8 @@ export class MatchingDetailComponent implements OnInit {
   teams : any;
   selectedTeam;
 
-  constructor(public afs: AngularFirestore, private route: ActivatedRoute) {
+  constructor(public auth:AuthService,
+    public afs: AngularFirestore, private route: ActivatedRoute) {
 
     const id = this.route.snapshot.paramMap.get('id');
 

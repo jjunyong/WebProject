@@ -14,11 +14,13 @@ export class NavigationComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
 
   info;
-  currentUser
+  currentUser;
+  temp;
   constructor(public auth: AuthService,
     public dialog: MatDialog,
     public teamService: TeamService,
-    public afAuth: AngularFireAuth) {
+    public afAuth: AngularFireAuth,
+    public afs:AngularFirestore) {
     this.currentUser;
   }
 
@@ -32,10 +34,6 @@ export class NavigationComponent implements OnInit {
   }
   pop() {
     // this.currentUser = this.afAuth.auth.currentUser.uid;
-
-
-
-
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '300px',
       // height: '300px',
@@ -43,12 +41,22 @@ export class NavigationComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result=>{
-      if(result){//신청이 들어온 해당 매치의 state를 바꾸어주어야 함. 
-        console.log("수락");
-      }
-      else{
-        console.log("거부");
-      }
+     
+      this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
+      .subscribe((data) => {
+        this.info = data;
+
+        if(result){//신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함. 
+          this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
+            isMatched : true
+          })
+        }
+        else{
+          console.log("거부");
+        }
+      })
+
+      
     })
   }
 

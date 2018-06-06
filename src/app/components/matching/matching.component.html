@@ -9,12 +9,16 @@
     <div>장소 : {{match.data.location}}</div>
 
     <div align="right">
-        <button (click)="matchRequest(match)" color="primary" mat-button>매치 신청</button>  
+        <button *ngIf="!match.data.isMatched else other" (click)="matchRequest(match)" color="primary" mat-button>매치 신청</button>  
+        <ng-template #other>
+                <strong>매치완료</strong>
+        </ng-template>
+
     </div>
 </mat-card>
 
 <div class="matchEnroll">
-<button routerLink="/createMatch" color="primary" mat-raised-button>매치 등록</button>
+<button *ngIf="auth.isLoggedIn()" routerLink="/createMatch" color="primary" mat-raised-button>매치 등록</button>
 </div>
 </div>
 

@@ -42,13 +42,15 @@
     <mat-list-item>{{comment.content}}</mat-list-item>
   </mat-list>
 
-  <mat-form-field>
+  <div *ngIf="auth.isLoggedIn()">
+  <mat-form-field >
     <textarea matInput [(ngModel)]= "text" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2"
               matAutosizeMaxRows="5"></textarea>
   </mat-form-field>
-  <button mat-raised-button (click)="submit()">작성</button>
+  <button mat-raised-button  (click)="submit()">작성</button>
+</div>
 
-  <mat-form-field>
+  <mat-form-field *ngIf="match.isMatched">
         <mat-select [(ngModel)] = "selectedTeam" placeholder="승자 선택">
           <mat-option *ngFor="let team of teams" [value]="team">
             {{ team.name }}
