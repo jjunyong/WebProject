@@ -1,3 +1,25 @@
-<p>
-  create-team works!
-</p>
+<h2>Create new MyTeam!</h2>
+<!-- <div>
+    <label>
+      <input [(ngModel)]="hero.id" placeholder="id"/>
+    </label>
+  </div> -->
+<div>
+  <label>name:
+    <input [(ngModel)]="team.name" placeholder="name" />
+  </label>
+</div>
+<div>
+  <label>Thumbnail:
+    <input [(ngModel)]="team.thumbnail" placeholder="imgURL" />
+  </label>
+</div>
+<input type="file" (change)="startUpload($event.target.files)">
+<!-- <div *ngIf="percentage | async as pct">
+   <progress [value]="pct" max="100"></progress>
+ </div>
+<div *ngIf="(snapshot | async) as snap">
+  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+</div> -->
+
+<button mat-raised-button (click)="goBack()" color="primary"> ADD</button>

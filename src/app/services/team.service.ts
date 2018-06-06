@@ -28,4 +28,16 @@ export class TeamService {
     return this.teamCollection.doc(tid).valueChanges();
   }
 
+  addTeam(team, uid){
+    const id = this.afs.createId();
+    this.afs.collection("team").doc(id).set({
+      name : team.name,
+      thumbnail : team.thumbnail
+    });
+
+    this.afs.collection('users').doc(uid).collection('teams').doc(id).set({
+      name: team.name,
+      thumbnail : team.thumbnail
+    })
+  }
 }
