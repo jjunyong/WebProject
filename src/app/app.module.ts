@@ -34,7 +34,7 @@ import { MAT_DATE_LOCALE, MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatchService } from './services/match.service';
 import { MatchingDetailComponent } from './components/matching/matching-detail/matching-detail.component';
-import { MatchingComponent } from './components/matching/matching.component';
+import { MatchingComponent, DialogOverviewExampleDialog2 } from './components/matching/matching.component';
 import { MyteamComponent } from './components/myteam/myteam.component';
 import { CreateTeamComponent } from './components/myteam/create-team/create-team.component';
 import { TeamDetailComponent } from './components/myteam/team-detail/team-detail.component';
@@ -58,7 +58,8 @@ import { DialogOverviewExampleDialog } from './components/navigation/navigation.
     MyteamComponent,
     CreateTeamComponent,
     TeamDetailComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DialogOverviewExampleDialog2,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,8 @@ import { DialogOverviewExampleDialog } from './components/navigation/navigation.
     FlexLayoutModule
   ],
   entryComponents: [
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DialogOverviewExampleDialog2
   ],
   providers: [
     AuthService,

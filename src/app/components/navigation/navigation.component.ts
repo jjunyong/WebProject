@@ -48,6 +48,8 @@ export class NavigationComponent implements OnInit {
 
         if(result){//신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함. 
           this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
+            // away_team : ,
+            // away_id: ,
             isMatched : true
           })
         }
@@ -69,7 +71,7 @@ export class NavigationComponent implements OnInit {
 export class DialogOverviewExampleDialog {
 
   info;
-  requestUser;
+  requestTeam;
 
   constructor(
     private teamService: TeamService,
@@ -84,7 +86,7 @@ export class DialogOverviewExampleDialog {
 
         this.afs.collection('users').doc(this.info.matchRequestFrom).valueChanges()
           .subscribe((data) => {
-            this.requestUser = data;
+            this.requestTeam = data;
           })
       })
 

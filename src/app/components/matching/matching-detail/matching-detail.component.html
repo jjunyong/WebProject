@@ -22,6 +22,10 @@
               <mat-icon>home</mat-icon>
               Host 팀 : {{match.host_team}}
           </mat-list-item>
+          <mat-list-item *ngIf="">
+                <mat-icon>home</mat-icon>
+                Away 팀 : {{match.away_team}}
+            </mat-list-item>
           <mat-list-item *ngIf="result; else other">
               <mat-icon>sentiment_very_satisfied</mat-icon>
               승팀 : {{match.result}}
@@ -50,7 +54,7 @@
   <button mat-raised-button  (click)="submit()">작성</button>
 </div>
 
-  <mat-form-field *ngIf="match.isMatched">
+  <mat-form-field *ngIf="match.isMatched" >
         <mat-select [(ngModel)] = "selectedTeam" placeholder="승자 선택">
           <mat-option *ngFor="let team of teams" [value]="team">
             {{ team.name }}

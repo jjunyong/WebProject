@@ -86,6 +86,7 @@ export class CreateMatchComponent implements OnInit {
 
     this.afs.collection("matches").add({
       host_team: this.selectedTeam.name,
+      host_id : this.selectedTeam.tid,
       location: this.selectedField,
       start_date: this.selectedDate.value,
       start_time: this.selectedStartTime.value,

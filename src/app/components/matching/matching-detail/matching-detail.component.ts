@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthService } from '../../../services/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-matching-detail',
@@ -18,7 +19,8 @@ export class MatchingDetailComponent implements OnInit {
   selectedTeam;
 
   constructor(public auth:AuthService,
-    public afs: AngularFirestore, private route: ActivatedRoute) {
+    public afs: AngularFirestore, private route: ActivatedRoute,
+  public afAuth : AngularFireAuth) {
 
     const id = this.route.snapshot.paramMap.get('id');
 
@@ -32,7 +34,7 @@ export class MatchingDetailComponent implements OnInit {
       .subscribe((data) => {
         this.comments = data;
       })
-    this.afs.collection("teams").valueChanges()
+    this.afs.collection("teams", ref=>ref.orderBy('name','asc')).valueChanges()
       .subscribe((data) => {
         this.teams = data;
       })
@@ -50,7 +52,7 @@ export class MatchingDetailComponent implements OnInit {
     console.log(this.text);
     this.afs.collection("matches").doc(id).collection("comments").add({
       content: this.text,
-      writer: "",
+      writer: this.afAuth.auth.currentUser.displayName,
       timestamp: new Date()
     })
   }

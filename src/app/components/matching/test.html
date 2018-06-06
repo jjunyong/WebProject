@@ -1,0 +1,14 @@
+<p>
+    <mat-form-field>
+        <mat-select [(ngModel)]="selectedTeam" [formControl]="teamControl" required>
+            <!-- <mat-option>--</mat-option> -->
+            <mat-option *ngFor="let team of myTeams" [value]="team">
+                {{team.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="teamControl.hasError('required')">팀을 선택하세요!</mat-error>
+    </mat-form-field>
+    <mat-dialog-actions>
+            <button mat-button mat-dialog-close>확인</button>
+    </mat-dialog-actions>
+</p>

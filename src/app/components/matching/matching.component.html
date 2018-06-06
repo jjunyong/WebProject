@@ -1,5 +1,7 @@
 <div class="loginBody">
-<mat-card routerLink="/matchingDetail/{{match.id}}" style="cursor: pointer" *ngFor="let match of matches">
+
+<mat-card style="cursor: pointer" *ngFor="let match of matches">
+    <div routerLink="/matchingDetail/{{match.id}}">
     <!-- <mat-icon matListIcon>folder</mat-icon> -->
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <img src = {{match.data.thumbnail}} mat-card-avatar>
@@ -8,12 +10,12 @@
     <div>매치 시간 : {{match.data.start_time}} ~ {{match.data.end_time}}</div>
     <div>장소 : {{match.data.location}}</div>
 
+    </div>
     <div align="right">
         <button *ngIf="!match.data.isMatched else other" (click)="matchRequest(match)" color="primary" mat-button>매치 신청</button>  
         <ng-template #other>
                 <strong>매치완료</strong>
         </ng-template>
-
     </div>
 </mat-card>
 
