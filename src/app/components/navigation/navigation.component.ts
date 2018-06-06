@@ -4,6 +4,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TeamService } from '../../services/team.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { team } from '../../team';
+
 
 @Component({
   selector: 'app-navigation',
@@ -16,6 +18,7 @@ export class NavigationComponent implements OnInit {
   info;
   currentUser;
   temp;
+
   constructor(public auth: AuthService,
     public dialog: MatDialog,
     public teamService: TeamService,
@@ -47,13 +50,23 @@ export class NavigationComponent implements OnInit {
         this.info = data;
 
         if(result){//신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함. 
-          this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
-            // away_team : ,
-            // away_id: ,
-            isMatched : true
-          })
+
+          console.log(this.info.matchRequestFrom);
+          let away = new team();
+          this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
+            .subscribe((team)=>{
+              away = team as team;
+
+              this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
+                away_team : away.name,
+                away_id: this.info.matchRequestFrom,
+                isMatched : true
+              })
+            })
+
+          
         }
-        else{
+        else{ 
           console.log("거부");
         }
       })
@@ -71,7 +84,7 @@ export class NavigationComponent implements OnInit {
 export class DialogOverviewExampleDialog {
 
   info;
-  requestTeam;
+  public requestTeam;
 
   constructor(
     private teamService: TeamService,
@@ -84,9 +97,15 @@ export class DialogOverviewExampleDialog {
         this.info = data;
         // console.log(this.info)
 
-        this.afs.collection('users').doc(this.info.matchRequestFrom).valueChanges()
-          .subscribe((data) => {
-            this.requestTeam = data;
+        // this.afs.collection('users').doc(this.info.matchRequestFrom).valueChanges()
+        //   .subscribe((data) => {
+        //     this.requestTeam = data;
+        //   })
+
+        this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
+          .subscribe((team)=>{
+            this.requestTeam = team;
+            console.log(this.requestTeam)
           })
       })
 

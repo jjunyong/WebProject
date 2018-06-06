@@ -12,7 +12,6 @@ import { TeamService } from '../../services/team.service';
 // class Team{
 //   name : string;
 // }
-
 @Component({
   selector: 'app-matching',
   templateUrl: './matching.component.html',
@@ -79,7 +78,7 @@ export class MatchingComponent implements OnInit {
 export class DialogOverviewExampleDialog2 {
 
   teamControl = new FormControl('', [Validators.required]);
-  selectedTeam;
+  selectedTeam = new team();
   myTeams = new Array();
   id;
   match;
@@ -89,6 +88,8 @@ export class DialogOverviewExampleDialog2 {
     private matService: MatchService,
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+
+
 
     const uid = this.auth.userDetails.uid;
     this.getTeams(uid);

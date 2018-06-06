@@ -22,7 +22,7 @@
               <mat-icon>home</mat-icon>
               Host 팀 : {{match.host_team}}
           </mat-list-item>
-          <mat-list-item *ngIf="">
+          <mat-list-item *ngIf="match.away_team">
                 <mat-icon>home</mat-icon>
                 Away 팀 : {{match.away_team}}
             </mat-list-item>

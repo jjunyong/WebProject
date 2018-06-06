@@ -17,7 +17,11 @@ $margin-promotion-sections-small: 15px;
 
 .docs-header-background {
   overflow: hidden;
-  background-color:#303F9F;
+  // background-color:#303F9F;
+  // background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoeIgMDWL_Pug8t59QqvYm6IEJzChIAgGmSrK0_iQKI6Y1w47z");
+  // background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_G4QgalR-bJYXniU4AFdgzNYlsxO6BaUuox3tBSOgjtpQBUM3Rg");
+  
+  background-size: cover;
 }
 
 .docs-header-section {
