@@ -36,7 +36,9 @@ import { MatchService } from './services/match.service';
 import { MatchingDetailComponent } from './components/matching/matching-detail/matching-detail.component';
 import { MatchingComponent } from './components/matching/matching.component';
 import { MyteamComponent } from './components/myteam/myteam.component';
-
+import { CreateTeamComponent } from './components/myteam/create-team/create-team.component';
+import { TeamDetailComponent } from './components/myteam/team-detail/team-detail.component';
+import { TeamService } from './services/team.service';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { MyteamComponent } from './components/myteam/myteam.component';
     FooterComponent,
     NoticeComponent,
     CreateMatchComponent,
-    MyteamComponent
+    MyteamComponent,
+    CreateTeamComponent,
+    TeamDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,8 @@ import { MyteamComponent } from './components/myteam/myteam.component';
     RankService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
-    MatchService
+    MatchService,
+    TeamService
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

@@ -10,6 +10,8 @@ import { MatchingComponent } from '../components/matching/matching.component';
 import { CreateMatchComponent } from '../components/matching/create-match/create-match.component';
 import { MatchingDetailComponent } from '../components/matching/matching-detail/matching-detail.component';
 import { MyteamComponent } from '../components/myteam/myteam.component';
+import { CreateTeamComponent } from '../components/myteam/create-team/create-team.component';
+import { TeamDetailComponent } from '../components/myteam/team-detail/team-detail.component';
 
 const routes: Routes = [
   { path: 'rank', component: RankComponent },
@@ -23,7 +25,8 @@ const routes: Routes = [
   { path: 'createMatch', component: CreateMatchComponent},
   { path: 'matchingDetail/:id', component : MatchingDetailComponent},
   { path: 'myteam', component : MyteamComponent},
-
+  { path: 'createTeam', component : CreateTeamComponent},
+  { path: 'teamDetail/:id', component : TeamDetailComponent}
 ];
 
 @NgModule({
