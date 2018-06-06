@@ -38,7 +38,7 @@ export class TeamDetailComponent implements OnInit {
       .subscribe(users => {
         console.log(users);
         this.users = users;
-        //console.log(this.userCtrl.value);
+        // console.log(this.userCtrl.value);
         this.filteredUsers = this.userCtrl.valueChanges
           .pipe(
             startWith(''),
@@ -67,7 +67,7 @@ export class TeamDetailComponent implements OnInit {
       .subscribe(team => this.team = team);
     this.teamService.getMyTeamMember(id)
       .subscribe(members => {
-        members.forEach((v, i, arr) => {
+        members.forEach((v: {uid} , i, arr) => {
           this.teamMembers = members;
           this.auth.getUser(v.uid)
             .subscribe(user => {

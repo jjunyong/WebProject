@@ -26,8 +26,8 @@ export class MatchingComponent implements OnInit {
   // myTeamControl = new FormControl('', [Validators.required]);
   // teamControl = new FormControl('', [Validators.required]);
   // teams : Team[];
-  //myTeams : Team[];
-  //teams : Team[];
+  // myTeams : Team[];
+  // teams : Team[];
 
   matches: any;
 
@@ -38,16 +38,16 @@ export class MatchingComponent implements OnInit {
     public router: Router,
     private dialog: MatDialog
   ) {
-    this.afs.collection("matches")
+    this.afs.collection('matches')
       .snapshotChanges().map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
-          return { id, data }
+          return { id, data };
         });
       }).subscribe((data) => {
         this.matches = data;
-      })
+      });
   }
 
   ngOnInit() {
@@ -56,31 +56,33 @@ export class MatchingComponent implements OnInit {
   matchRequest(match) {
 
 
-    let dialog = this.dialog.open(DialogOverviewExampleDialog2, {
+    const dialog = this.dialog.open(DialogOverviewExampleDialog2, {
       width: '300px',
       height: '300px',
       data: match
-    })
+    });
 
     dialog.afterClosed().subscribe(result => {
 
-    })
+    });
   }
 }
 
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'test.html',
 })
+// tslint:disable-next-line:component-class-suffix
 export class DialogOverviewExampleDialog2 {
 
   teamControl = new FormControl('', [Validators.required]);
   selectedTeam;
   myTeams = new Array();
   id;
-  match
+  match;
   constructor(private auth: AuthService,
     private teamService: TeamService,
     private afs: AngularFirestore,
@@ -93,49 +95,57 @@ export class DialogOverviewExampleDialog2 {
 
   }
 
-  getTeams(uid) {
+  getTeams(uid): void {
     this.teamService.getMyTeams(uid)
       .subscribe(teams => {
+        console.log(this.data);
         console.log(teams);
-        teams.forEach(v => {
+        teams.forEach((v: any) => {
           console.log(v);
           this.teamService.getMyTeam(v.tid)
             .subscribe(team => {
               console.log(team);
+
               this.myTeams.push(team);
             });
         });
+
       });
 
-      this.afs.collection('matches').doc(this.data).valueChanges()
+  }
+
+  request() {
+    console.log(this.selectedTeam);
+
+    this.afs.collection('matches').doc(this.data.id).valueChanges()
       .subscribe((data) => {
-        this.match = data
+        console.log(data);
+        this.match = data;
         this.afs.collection('teams').doc(this.match.host_id).collection('members').valueChanges()
           .subscribe((members) => {
-            let member = members;
-
-            member.forEach(
-              (element) => {
+            members.forEach(
+              (element: any) => {
+                console.log(element);
                 this.afs.collection('users').doc(element.uid).update({
                   matchRequestFrom: this.selectedTeam.tid,
                   matchRequestMatch: this.data.id
-                })
+                });
               }
-            )
-          })
+            );
+          });
       });
-
-
-
-
-    // this.snackBar.open("매치 신청 완료!", "", {
-    //   duration: 1000,
-    // });
-
-    // this.afs.collection('matches').doc(this.data).update({
-    //   away_id: this.selectedTeam.tid,
-    //   away_team: this.selectedTeam.name
-    // })
   }
-}
 
+
+
+
+
+  // this.snackBar.open("매치 신청 완료!", "", {
+  //   duration: 1000,
+  // });
+
+  // this.afs.collection('matches').doc(this.data).update({
+  //   away_id: this.selectedTeam.tid,
+  //   away_team: this.selectedTeam.name
+  // })
+}

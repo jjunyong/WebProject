@@ -15,31 +15,29 @@ export class MatchingDetailComponent implements OnInit {
   result;
   text: string;
   comments: any;
-  teams : any;
+  teams: any;
   selectedTeam;
 
-  constructor(public auth:AuthService,
+  constructor(public auth: AuthService,
     public afs: AngularFirestore, private route: ActivatedRoute,
-  public afAuth : AngularFireAuth) {
+    public afAuth: AngularFireAuth) {
 
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.afs.collection("matches").doc(id).valueChanges()
+    this.afs.collection('matches').doc(id).valueChanges()
       .subscribe((data) => {
         this.match = data;
         this.result = this.match.result;
-      })
+      });
 
-    this.afs.collection("matches").doc(id).collection("comments").valueChanges()
+    this.afs.collection('matches').doc(id).collection('comments').valueChanges()
       .subscribe((data) => {
         this.comments = data;
-      })
-    this.afs.collection("teams", ref=>ref.orderBy('name','asc')).valueChanges()
+      });
+    this.afs.collection('teams', ref => ref.orderBy('name', 'asc')).valueChanges()
       .subscribe((data) => {
         this.teams = data;
-      })
-
-
+      });
 
   }
 
@@ -50,18 +48,18 @@ export class MatchingDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id);
     console.log(this.text);
-    this.afs.collection("matches").doc(id).collection("comments").add({
+    this.afs.collection('matches').doc(id).collection('comments').add({
       content: this.text,
       writer: this.afAuth.auth.currentUser.displayName,
       timestamp: new Date()
-    })
+    });
   }
 
-  change(){
+  change() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.afs.collection("matches").doc(id).update({
-      result : this.selectedTeam.name
-    })
+    this.afs.collection('matches').doc(id).update({
+      result: this.selectedTeam.name
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatButtonModule, MatInputModule, MatCardModule, MatSelectModule, MatStepperModule, MatDatepickerModule, MatSnackBarModule, MatCheckboxModule, MatNativeDateModule } from '@angular/material';
+
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -13,58 +13,65 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatDialogModule} from '@angular/material/dialog';
-
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatGridListModule,
-    MatTableModule,
-    MatMenuModule,
-    MatInputModule,
-    MatCardModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatSortModule,
-    MatSelectModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatSnackBarModule,
-    MatAutocompleteModule,
-    MatDialogModule
-  ],
-  exports: [
-    MatButtonModule,
-    MatSlideToggleModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatGridListModule,
-    MatTableModule,
-    MatMenuModule,
-    MatInputModule,
-    MatCardModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatSortModule,
-    MatSelectModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatSnackBarModule,
-    MatAutocompleteModule,
-    MatDialogModule
-  ],
-  declarations: []
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatToolbarModule,
+        MatDividerModule,
+        MatGridListModule,
+        MatTableModule,
+        MatMenuModule,
+        MatInputModule,
+        MatCardModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatSortModule,
+        MatSelectModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        MatSnackBarModule,
+        MatAutocompleteModule,
+        MatDialogModule
+    ],
+    exports: [
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatToolbarModule,
+        MatDividerModule,
+        MatGridListModule,
+        MatTableModule,
+        MatMenuModule,
+        MatInputModule,
+        MatCardModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatSortModule,
+        MatSelectModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCheckboxModule,
+        MatSnackBarModule,
+        MatAutocompleteModule,
+        MatDialogModule
+    ],
+    declarations: []
 })
 export class MaterialModule { }

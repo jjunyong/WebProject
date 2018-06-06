@@ -33,10 +33,10 @@ export class MyteamComponent implements OnInit {
     this.teamService.getMyTeams(this.curerntUser.uid)
       .subscribe(teams => {
         console.log(teams);
-        teams.forEach((v) => {
+        teams.forEach((v: any) => {
           console.log(v);
           this.teamService.getMyTeam(v.tid)
-            .subscribe(team => {
+            .subscribe((team: any) => {
               team.match_num = team.win + team.lose;
               console.log(team);
 

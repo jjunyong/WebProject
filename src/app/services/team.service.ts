@@ -45,26 +45,26 @@ export class TeamService {
 
   addTeam(team, uid) {
     const id = this.afs.createId();
-    this.afs.collection("teams").doc(id).set({
-      tid : id,
-      name : team.name,
-      thumbnail : team.thumbnail,
-      lose : 0,
-      win : 0,
-      match_num : 0
+    this.afs.collection('teams').doc(id).set({
+      tid: id,
+      name: team.name,
+      thumbnail: team.thumbnail,
+      lose: 0,
+      win: 0,
+      match_num: 0
     });
 
-    this.afs.collection("teams").doc(id).collection("members")
-    .doc(uid).set({
-      uid: uid
-    });
+    this.afs.collection('teams').doc(id).collection('members')
+      .doc(uid).set({
+        uid: uid
+      });
 
     this.afs.collection('users').doc(uid).collection('teams').doc(id).set({
-      tid : id
+      tid: id
     });
   }
 
-  getRequest(uid){
-    return this.afs.collection("users").doc(uid).valueChanges()
+  getRequest(uid) {
+    return this.afs.collection('users').doc(uid).valueChanges();
   }
 }

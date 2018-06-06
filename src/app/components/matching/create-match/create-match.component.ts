@@ -28,7 +28,7 @@ export class CreateMatchComponent implements OnInit {
   selectedDate = new FormControl(new Date());
   host_thumbnail;
 
-  fields = ["평봉 필드", "히딩크 드림필드"];
+  fields = ['평봉 필드', '히딩크 드림필드'];
 
   constructor(private afs: AngularFirestore,
     private _formBuilder: FormBuilder,
@@ -67,7 +67,7 @@ export class CreateMatchComponent implements OnInit {
     this.teamService.getMyTeams(uid)
       .subscribe(teams => {
         console.log(teams);
-        teams.forEach(v => {
+        teams.forEach((v: any) => {
           console.log(v);
           this.teamService.getMyTeam(v.tid)
             .subscribe(team => {
@@ -84,17 +84,17 @@ export class CreateMatchComponent implements OnInit {
   createMatch() {
     // console.log(this.selectedTeam);
 
-    this.afs.collection("matches").add({
+    this.afs.collection('matches').add({
       host_team: this.selectedTeam.name,
-      host_id : this.selectedTeam.tid,
+      host_id: this.selectedTeam.tid,
       location: this.selectedField,
       start_date: this.selectedDate.value,
       start_time: this.selectedStartTime.value,
       end_time: this.selectedEndTime.value,
       thumbnail: this.selectedTeam.thumbnail,
       updated: new Date(),
-      isMatched : false
-    })
+      isMatched: false
+    });
   }
 
   // valueChange(){

@@ -9,6 +9,6 @@
         <mat-error *ngIf="teamControl.hasError('required')">팀을 선택하세요!</mat-error>
     </mat-form-field>
     <mat-dialog-actions>
-            <button mat-button mat-dialog-close>확인</button>
+            <button (click)="request()" mat-button mat-dialog-close>확인</button>
     </mat-dialog-actions>
 </p>
