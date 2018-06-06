@@ -9,18 +9,30 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class MatchingDetailComponent implements OnInit {
 
-  match:any;
+  match: any;
   result;
-  text;
+  text: string;
+  comments: any;
+  teams : any;
+  selectedTeam;
 
-  constructor(public afs: AngularFirestore, private route: ActivatedRoute) { 
+  constructor(public afs: AngularFirestore, private route: ActivatedRoute) {
 
     const id = this.route.snapshot.paramMap.get('id');
 
     this.afs.collection("matches").doc(id).valueChanges()
-      .subscribe((data)=>{
+      .subscribe((data) => {
         this.match = data;
         this.result = this.match.result;
+      })
+
+    this.afs.collection("matches").doc(id).collection("comments").valueChanges()
+      .subscribe((data) => {
+        this.comments = data;
+      })
+    this.afs.collection("teams").valueChanges()
+      .subscribe((data) => {
+        this.teams = data;
       })
 
 
@@ -30,10 +42,21 @@ export class MatchingDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(){
+  submit() {
     const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    console.log(this.text);
     this.afs.collection("matches").doc(id).collection("comments").add({
-      content : this.text
+      content: this.text,
+      writer: "",
+      timestamp: new Date()
+    })
+  }
+
+  change(){
+    const id = this.route.snapshot.paramMap.get('id');
+    this.afs.collection("matches").doc(id).update({
+      result : this.selectedTeam.name
     })
   }
 

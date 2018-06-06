@@ -55,12 +55,12 @@ export class CreateMatchComponent implements OnInit {
 
     // this.afs.collection("teams", ref=> ref.where('name','==',''+this.selectedTeam.name)).valueChanges()
     //   .subscribe((data)=>{
-    //     // this.host_thumbnail = data[0];
-    //     console.log(data);
+    //     this.host_thumbnail = data[0];
+    //     console.log(this.host_thumbnail);
     //   })
   }
   createMatch() {
-    console.log(this.selectedTeam);
+    // console.log(this.selectedTeam);
 
     this.afs.collection("matches").add({
       host_team: this.selectedTeam.name,

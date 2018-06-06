@@ -37,12 +37,26 @@
     </div>
   </div>
 
-  
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-        <textarea matInput [(ngModel)]="text" placeholder="댓글을 다세요"></textarea>
-    </mat-form-field>
-    <button mat-raised-button (click)="submit">작성</button>
-</form>
+  <mat-list *ngFor="let comment of comments">
+      <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4>
+    <mat-list-item>{{comment.content}}</mat-list-item>
+  </mat-list>
+
+  <mat-form-field>
+    <textarea matInput [(ngModel)]= "text" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2"
+              matAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+  <button mat-raised-button (click)="submit()">작성</button>
+
+  <mat-form-field>
+        <mat-select [(ngModel)] = "selectedTeam" placeholder="승자 선택">
+          <mat-option *ngFor="let team of teams" [value]="team">
+            {{ team.name }}
+          </mat-option>
+        </mat-select>
+</mat-form-field>
+<button mat-raised-button (click)="change()">확인</button>
+    
+
 
   

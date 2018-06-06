@@ -82,16 +82,6 @@ export class MatchingComponent implements OnInit {
       this.snackBar.open("매치 신청 완료!","", {
           duration: 1000,
         });
-  
-
-      
-
-   
-    
-    
-
-
-     
   }
 
 }
