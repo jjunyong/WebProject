@@ -33,6 +33,7 @@ export class MyteamComponent implements OnInit {
     this.teamService.getMyTeams(this.curerntUser.uid)
       .subscribe(teams => {
         console.log(teams);
+        const temp = new Array();
         teams.forEach((v: any) => {
           console.log(v);
           this.teamService.getMyTeam(v.tid)
@@ -40,9 +41,10 @@ export class MyteamComponent implements OnInit {
               team.match_num = team.win + team.lose;
               console.log(team);
 
-              this.teams.push(team);
+              temp.push(team);
             });
         });
+        this.teams = temp;
 
       });
   }
