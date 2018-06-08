@@ -62,14 +62,14 @@
 
 <div class="body">
 <mat-card class="card_wrap" >
-  <h1> <p class="jh">Match Detail</p></h1>
+  <h1> <p class="ns">Match Detail</p></h1>
   <div class="al">
     <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
         <div style="cursor:pointer" class="card">
                 <img src={{match.thumbnail}} alt="Notebook" style="width:100%">
         </div>
     </div>
-    <h2><p class="jh">VS</p></h2>
+    <h2><p class="jgc">VS</p></h2>
     <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
         <div style="cursor:pointer" class="card">
                 <img src={{defaultImage}} alt="Notebook" style="width:100%">
@@ -77,11 +77,11 @@
     </div>
   </div>
   <mat-card-content>
-    <h3 style="font-weight:bold; color:black;">{{match.location}}</h3>
-    <h3>{{match.start_date | date}}</h3>
-    <h3>{{match.start_time}} ~ {{match.end_time}}</h3>
-    <p>Host team : {{match.host_team}}</p>
-    <p>Away team : {{match.away_team}}</p>
+    <h3 style="font-weight:bold; color:black;"><p class="jgc">{{match.location}}</p></h3>
+    <h3><p class="jgc">{{match.start_date | date}}</p></h3>
+    <h3><p class="jgc">{{match.start_time}} ~ {{match.end_time}}</p></h3>
+    <p class="jgc">Host team : {{match.host_team}}</p>
+    <p class="jgc">Away team : {{match.away_team}}</p>
     <p *ngIf="result">Winner : {{match.result}}</p>
   </mat-card-content>
 </mat-card>
