@@ -46,6 +46,14 @@ export class MatchingComponent implements OnInit {
         });
       }).subscribe((data) => {
         this.matches = data;
+        // console.log(data);
+        // this.afs.collection('teams').doc(this.matches.data.tid).valueChanges()
+        //   .subscribe((team : any)=>{
+        //     console.log(team);
+        //     this.afs.collection('matches').doc(this.matches.id).update({
+        //       image : team.image
+        //     })
+        //   })
       });
   }
 

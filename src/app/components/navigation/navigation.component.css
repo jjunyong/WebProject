@@ -18,4 +18,9 @@ a {
     display: inline-block;
     padding-left: 6px;
   }
+
+  .mat-toolbar.mat-primary{
+    background : #2d2c2c;
+    color : #ffff;
+  }
   

@@ -1,9 +1,7 @@
-<div class="loginBody">
+<!-- <div class="loginBody">
 
     <mat-card style="cursor: pointer" *ngFor="let match of matches">
         <div routerLink="/matchingDetail/{{match.id}}">
-            <!-- <mat-icon matListIcon>folder</mat-icon> -->
-            <!-- <div mat-card-avatar class="example-header-image"></div> -->
             <img src={{match.data.thumbnail}} mat-card-avatar>
             <h4>Host 팀 : {{match.data.host_team}}</h4>
             <div>매치 날짜 : {{match.data.start_date | date }}</div>
@@ -19,8 +17,22 @@
         </div>
     </mat-card>
 
-
-    <div class="matchEnroll">
-        <button *ngIf="auth.isLoggedIn()" routerLink="/createMatch" color="primary" mat-raised-button>매치 등록</button>
+-->
+<!-- <div class="matchEnroll">
+    <button *ngIf="auth.isLoggedIn()" routerLink="/createMatch" color="primary" mat-raised-button>매치 등록</button>
+</div> -->
+<!-- </div>  -->
+<div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
+    <div style="cursor:pointer" class="container" *ngFor="let match of matches">
+        <div routerLink="/matchingDetail/{{match.id}}">
+            <img src={{match.data.image}} alt="Notebook" style="width:100%">
+            <div class="content">
+                <h4>Match Info</h4>
+                <p>Host 팀 : {{match.data.host_team}} </p>
+                <p>매치 날짜 : {{match.data.start_date | date }}</p>
+                <p>매치 시간 : {{match.data.start_time}} ~ {{match.data.end_time}}</p>
+                <p>장소 : {{match.data.location}}</p>
+            </div>
+        </div>
     </div>
 </div>

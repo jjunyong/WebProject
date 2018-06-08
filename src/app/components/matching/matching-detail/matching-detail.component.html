@@ -1,3 +1,7 @@
+<div class="test">
+<h1>team 쭌 vs 맨체스터 유나이티드</h1>
+</div>
+<!-- 
 <div class="wrapper">
   <div class="product-img">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTsZZgGqu6p_uhJ-k3P0wjKSEVNdvSRWVJOM9pcFEG8RJabIx5" height="420"
@@ -40,21 +44,38 @@
     <div class="product-price-btn">
     </div>
   </div>
-</div>
+</div> -->
 
-<mat-list *ngFor="let comment of comments">
-  <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4>
-  <mat-list-item>{{comment.content}}</mat-list-item>
-</mat-list>
 
-<div *ngIf="auth.isLoggedIn()">
+
+<!-- <div *ngIf="auth.isLoggedIn()">
   <mat-form-field>
     <textarea matInput [(ngModel)]="text" placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
   </mat-form-field>
   <button mat-raised-button (click)="submit()">작성</button>
+</div> -->
+
+<div class="container">
+  <!-- <form> -->
+    <div class="form-group">
+      <textarea class="form-control status-box" rows="3" placeholder="Enter your comment here..."  [(ngModel)]="contents" ></textarea>
+    </div>
+  <!-- </form> -->
+  <div class="button-group pull-right">
+    <!-- <p class="counter">250</p> -->
+    <!-- <a href="#" (click)="action()" class="btn btn-primary">Post</a> -->
+    <button (click)="action()" class="btn btn-primary">Post</button>
+  </div>
+  <!-- <ul class="posts">
+  </ul> -->
 </div>
 
-<div *ngIf="condition">
+<mat-list class="posts" *ngFor="let comment of comments">
+  <!-- <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4> -->
+  <mat-list-item class="li">{{comment.content}} - {{comment.writer}}({{comment.timestamp | date}})</mat-list-item>
+</mat-list>
+
+<!-- <div *ngIf="condition">
   <mat-form-field>
     <mat-select [(ngModel)]="selectedTeam" placeholder="승자 선택">
       <mat-option [value]="host">
@@ -66,4 +87,4 @@
     </mat-select>
   </mat-form-field>
   <button mat-raised-button (click)="changeStatus()">확인</button>
-</div>
+</div> -->

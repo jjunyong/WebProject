@@ -96,7 +96,8 @@ export class CreateMatchComponent implements OnInit {
       isMatched: false,
       away_team: '',
       away_id: '',
-      result: ''
+      result: '',
+      image : this.selectedTeam.image
     });
   }
 

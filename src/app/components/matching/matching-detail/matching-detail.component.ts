@@ -4,6 +4,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthService } from '../../../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { variable } from '@angular/compiler/src/output/output_ast';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-matching-detail',
@@ -14,7 +15,7 @@ export class MatchingDetailComponent implements OnInit {
 
   match: any;
   result;
-  text: string;
+  contents: string;
   comments: any;
   host: any;
   away: any;
@@ -55,16 +56,16 @@ export class MatchingDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    console.log(this.text);
-    this.afs.collection('matches').doc(id).collection('comments').add({
-      content: this.text,
-      writer: this.afAuth.auth.currentUser.displayName,
-      timestamp: new Date()
-    });
-  }
+  // submit() {
+  //   const id = this.route.snapshot.paramMap.get('id');
+  //   console.log(id);
+  //   console.log(this.text);
+  //   this.afs.collection('matches').doc(id).collection('comments').add({
+  //     content: this.text,
+  //     writer: this.afAuth.auth.currentUser.displayName,
+  //     timestamp: new Date()
+  //   });
+  // }
 
   changeStatus() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -104,5 +105,19 @@ export class MatchingDetailComponent implements OnInit {
 
     });
 
+  }
+
+
+  action(){
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    console.log(this.contents);
+    this.afs.collection('matches').doc(id).collection('comments').add({
+      content: this.contents,
+      writer: this.afAuth.auth.currentUser.displayName,
+      timestamp: new Date()
+    });
+  
+    this.contents = '';
   }
 }

@@ -8,6 +8,7 @@
 
 body {
     background-color: #fdf1ec;
+    background-size: cover;
   }
   
   .wrapper {
@@ -138,3 +139,67 @@ body {
   .example-full-width {
     width: 100%;
   }
+
+
+  .heading {
+    color: #666666;
+    text-align: center;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: #404040;
+  background-color: #eee;
+}
+.container {
+  width: 520px;
+  margin-top: 20px;
+}
+.button-group {
+  margin-bottom: 20px;
+}
+.counter {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+.posts {
+  clear: both;
+  list-style: none;
+  padding-left: 0;
+  width: 30%;
+  text-align: center;
+}
+.li {
+  background-color: #fff;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 10px;
+  // padding-top: 10px;
+  // padding-left: 20px;
+  // padding-right: 20px;
+  // padding-bottom: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  min-height: 42px;
+  box-shadow:8px 8px 5px #888888;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+h1{
+  color:#0845A2;
+  font-size:3.5em;
+  position:relative;
+  text-align:center;
+  margin-top:1em;
+  font-weight:700; 
+  z-index:999;
+}
+
+.test{
+  // background-color: #0845A2;
+  // background-image: url("")
+}
