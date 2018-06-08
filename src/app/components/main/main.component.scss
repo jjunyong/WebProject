@@ -125,3 +125,18 @@ $margin-promotion-sections-small: 15px;
     margin: $margin-promotion-sections-small 0;
   }
 }
+
+.mat-card-avatar {
+    vertical-align:middle;
+}
+
+.recentMatches mat-row:hover, .notice mat-row:focus {
+  cursor:pointer;
+  background-color:rgba(63,81,181,0.2);
+  
+}
+
+.notice mat-row:hover, .notice mat-row:focus {
+  cursor:pointer;
+  background-color:rgba(63,81,181,0.2);
+}

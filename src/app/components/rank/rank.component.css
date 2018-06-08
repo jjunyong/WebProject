@@ -12,3 +12,8 @@
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
 }
+
+
+.mat-card-avatar {
+  vertical-align:middle;
+}

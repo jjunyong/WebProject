@@ -1,150 +1,130 @@
-<!-- <img id="header-image" src="https://firebasestorage.googleapis.com/v0/b/myteam-af335.appspot.com/o/%ED%9E%88%EB%94%A9%ED%81%AC.jpeg?alt=media&token=2c58348d-1b39-4b59-8b5d-f2383691fd4f"> -->
-
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Web Font</title>
-<link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/kopubbatang.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css" rel="stylesheet">
-<style>
-.np{font-family: 'Nanum Pen Script', cursive;}
-.jg{font-family: 'Jeju Gothic', sans-serif;}
-.jm{font-family: 'Jeju Myeongjo', serif;}
-.kb{font-family: 'KoPub Batang', serif;}
-.nb{font-family: 'Nanum Brush Script', cursive;}
-.ns{font-family: 'Noto Sans KR', sans-serif;}
-.hn{font-family: 'Hanna', sans-serif;}
-.ng{font-family: 'Nanum Gothic', sans-serif;}
-.nm{font-family: 'Nanum Myeongjo', serif;}
-.jh{font-family: 'Jeju Hallasan', cursive;}
-.ngc{font-family: 'Nanum Gothic Coding', monospace;}
-</style>
-</head>
-<body>
-     <!-- <p class="np"> 안녕하세요. Code.D 입니다.('Nanum Pen Script') </p>
-     <p class="jg"> 안녕하세요. Code.D 입니다.('Jeju Gothic') </p>
-     <p class="jm"> 안녕하세요. Code.D 입니다.('Jeju Myeongjo') </p>
-     <p class="kb"> 안녕하세요. Code.D 입니다.('KoPub Batang') </p>
-     <p class="nb"> 안녕하세요. Code.D 입니다.('Nanum Brush Script') </p>
-     <p class="ns"> 안녕하세요. Code.D 입니다.('Noto Sans KR') </p>
-     <p class="hn"> 안녕하세요. Code.D 입니다.('Hanna') </p>
-     <p class="ng"> 안녕하세요. Code.D 입니다.('Nanum Gothic') </p>
-     <p class="nm"> 안녕하세요. Code.D 입니다.('Nanum Myeongjo') </p>
-     <p class="jh"> 안녕하세요. Code.D 입니다.('Jeju Hallasan') </p>
-     <p class="ngc"> 안녕하세요. Code.D 입니다.('Nanum Gothic Coding') </p> -->
-</body>
-</html> 
-
 <header class="docs-header-background">
     <div class="docs-header-section">
         <div class="docs-header-headline">
-            <h1 class="mat-h1"><p class="jg"> 한동 매칭 프로그램 </p></h1>
-            <h2><p class="np">팀을 등록하고 상대팀에 도전해보세요!</p> </h2>
+            <h1 class="mat-h1">
+                <p class="jg"> 한동 매칭 프로그램 </p>
+            </h1>
+            <h2>
+                <p class="np">팀을 등록하고 상대팀에 도전해보세요!</p>
+            </h2>
         </div>
         <div class="docs-header-start">
             <a mat-raised-button class="docs-button" routerLink="/notice">Get started</a>
         </div>
     </div>
- 
+
 </header>
 
 <mat-divider></mat-divider>
 <div fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-    <mat-card class="example-card" fxFlex="50%">
+    <mat-card class="example-card" fxFlex="33%">
         <mat-card-header>
             <mat-card-title>
-                <h2><p class="jg"> 최근 올라온 매치<i class="material-icons">assistant_photo</i></p></h2>
+                <h2>
+                    <p class="jg"> 최근 올라온 매치
+                        <i class="material-icons">assistant_photo</i>
+                    </p>
+                </h2>
             </mat-card-title>
-            <mat-card-subtitle><p class="np">확인하세요</p> </mat-card-subtitle>
+            <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-             
-            <mat-table [dataSource]="matches">
+            <mat-table class="recentMatches" [dataSource]="matches">
                 <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef> <p class="jg"> 팀 이름</p> </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef>
+                        <p class="jg"> 팀 이름</p>
+                    </mat-header-cell>
                     <mat-cell *matCellDef="let element">
-                        <a routerLink='/matchingDetail/{{element.id}}'>
-                            <p class="ngc">  <img src="{{element.data.thumbnail}}" mat-card-avatar> {{element.data.host_team}}</p></a>
+                        <img src="{{element.data.thumbnail}}" mat-card-avatar>
+                        <span class="ngc"> {{element.data.host_team}} </span>
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="date">
-                    <mat-header-cell *matHeaderCellDef> <p class="jg">  일시 </p> </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> <p class="ngc">{{element.data.start_date | date}}</p> </mat-cell>
+                    <mat-header-cell *matHeaderCellDef>
+                        <p class="jg"> 일시 </p>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <p class="ngc">{{element.data.start_date | date}}</p>
+                    </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="matchDisplayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: matchDisplayedColumns;"></mat-row>
+                <mat-row routerLink='/matchingDetail/{{row.id}}' *matRowDef="let row; columns: matchDisplayedColumns;"></mat-row>
             </mat-table>
-                
+
         </mat-card-content>
         <mat-card-actions>
-               
-            <button routerLink='/matching' mat-button><p class="hn">더 보기</p></button>
-                
+
+            <button routerLink='/matching' mat-button>
+                <p class="hn">더 보기</p>
+            </button>
+
         </mat-card-actions>
     </mat-card>
 
-    <mat-card class="example-card" fxFlex="50%">
+    <mat-card class="example-card" fxFlex="33%">
         <mat-card-header>
             <mat-card-title>
-                <h2><p class="jg"> 팀순위</p></h2>
+                <h2>
+                    <p class="jg"> 팀순위</p>
+                </h2>
             </mat-card-title>
-            <mat-card-subtitle><p class="np">확인하세요</p> </mat-card-subtitle>
+            <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <mat-table [dataSource]="ranks">
                 <ng-container matColumnDef="name">
                     <mat-header-cell *matHeaderCellDef> 팀 이름</mat-header-cell>
                     <mat-cell *matCellDef="let element">
-                            <p class="ngc"><img src="{{element.thumbnail}}" mat-card-avatar> {{element.name}}</p>
+                        <img src="{{element.thumbnail}}" mat-card-avatar>
+                        <span class="ngc"> {{element.name}}</span>
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="win">
                     <mat-header-cell *matHeaderCellDef> 순위 </mat-header-cell>
-                    <p class="ngc">  <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell></p>
+                        <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="rankDisplayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: rankDisplayedColumns;"></mat-row>
             </mat-table>
         </mat-card-content>
         <mat-card-actions>
-            <button routerLink='/rank' mat-button><p class="hn">더 보기</p></button>
+            <button routerLink='/rank' mat-button>
+                <p class="hn">더 보기</p>
+            </button>
         </mat-card-actions>
     </mat-card>
 
-    <mat-card class="example-card" fxFlex="50%">
+    <mat-card class="example-card" fxFlex="33%">
         <mat-card-header>
             <mat-card-title>
-                    <h2><p class="jg"> 공지사항</p></h2>
+                <h2>
+                    <p class="jg"> 공지사항</p>
+                </h2>
             </mat-card-title>
-            <mat-card-subtitle><p class="np">확인하세요</p> </mat-card-subtitle>
+            <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <mat-table [dataSource]="notices">
+            <mat-table class="notice" [dataSource]="notices">
                 <ng-container matColumnDef="title">
-                        <mat-header-cell *matHeaderCellDef><p class="ngc">Title</p>  </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
                     <mat-cell *matCellDef="let element">
-                            <a routerLink='/notice/{{element.id}}'>{<p class="ngc"></p>{element.data.title}}</p></a>
+                        <span class="ngc">{{element.data.title}}</span>
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="timestamp">
                     <mat-header-cell *matHeaderCellDef> 일시 </mat-header-cell>
-                     <mat-cell *matCellDef="let element"> <p class="ngc"></p>{{element.data.timestamp | date}}</p> </mat-cell>
+                    <mat-cell *matCellDef="let element">
+                        <p class="ngc">{{element.data.timestamp | date}}</p>
+                    </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="noticeDisplayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: noticeDisplayedColumns;"></mat-row>
+                <mat-row routerLink='/notice/{{row.id}}' *matRowDef="let row; columns: noticeDisplayedColumns;"></mat-row>
             </mat-table>
         </mat-card-content>
         <mat-card-actions>
-            <button routerLink='/notice' mat-button><p class="hn">더 보기</p></button>
+            <button routerLink='/notice' mat-button>
+                <p class="hn">더 보기</p>
+            </button>
         </mat-card-actions>
     </mat-card>
 

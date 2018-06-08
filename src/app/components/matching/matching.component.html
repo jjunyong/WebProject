@@ -23,16 +23,16 @@
 </div> -->
 <!-- </div>  -->
 <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
-    <div style="cursor:pointer" class="container" *ngFor="let match of matches">
-        <div routerLink="/matchingDetail/{{match.id}}">
-            <img src={{match.data.image}} alt="Notebook" style="width:100%">
-            <div class="content">
-                <h4>Match Info</h4>
-                <p>Host 팀 : {{match.data.host_team}} </p>
-                <p>매치 날짜 : {{match.data.start_date | date }}</p>
-                <p>매치 시간 : {{match.data.start_time}} ~ {{match.data.end_time}}</p>
-                <p>장소 : {{match.data.location}}</p>
+        <div style="cursor:pointer" class="container" *ngFor="let match of matches">
+            <div routerLink="/matchingDetail/{{match.id}}">
+                <img src={{match.data.image}} alt="Notebook" style="width:100%">
+                <div class="content">
+                    <h4>Match Info</h4>
+                    <p>Host 팀 : {{match.data.host_team}} </p>
+                    <p>매치 날짜 : {{match.data.start_date | date }}</p>
+                    <p>매치 시간 : {{match.data.start_time}} ~ {{match.data.end_time}}</p>
+                    <p>장소 : {{match.data.location}}</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
