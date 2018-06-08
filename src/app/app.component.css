@@ -6,4 +6,8 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     width: 250px;
   }
   
-  
+  .body {
+    margin:auto;
+    max-width: 1200px;
+    min-height: 600px
+  }

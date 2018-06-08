@@ -20,9 +20,12 @@ body {
   font-family: 'Nanum Gothic', 'Jeju Gothic', sans-serif;
 }
 
+h1,h2,h3,h4,h5,h6,p {
+  font-family: 'Nanum Gothic', monospace;
+}
 
 .np {
-  font-family: 'Nanum Pen Script', 'cursive';
+  font-family: 'Nanum Pen Script', cursive;
 }
 
 .jg {
@@ -38,7 +41,7 @@ body {
 }
 
 .nb {
-  font-family: 'Nanum Brush Script', 'cursive';
+  font-family: 'Nanum Brush Script', cursive;
 }
 
 .ns {
@@ -58,7 +61,7 @@ body {
 }
 
 .jh {
-  font-family: 'Jeju Hallasan', 'cursive';
+  font-family: 'Jeju Hallasan', cursive;
 }
 
 .ngc {
