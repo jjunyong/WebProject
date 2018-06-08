@@ -61,58 +61,62 @@
 </div> -->
 
 <div class="body">
-<mat-card class="card_wrap" >
-  <h1> <p class="jh">Match Detail</p></h1>
-  <div class="al">
-    <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
-        <div style="cursor:pointer" class="card">
-                <img src={{match.thumbnail}} alt="Notebook" style="width:100%">
-        </div>
-    </div>
-    <h2><p class="jgc">VS</p></h2>
-    <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
-        <div style="cursor:pointer" class="card">
-                <img src={{defaultImage}} alt="Notebook" style="width:100%">
-        </div>
-    </div>
-  </div>
-  <mat-card-content>
-    <h3 style="font-weight:bold; color:black;"><p class="ngc">{{match.location}}</p></h3>
-    <h3><p class="jg">{{match.start_date | date}}</p></h3>
-    <h3><p class="jg">{{match.start_time}} ~ {{match.end_time}}</p></h3>
-    <p class="jg">Host team : {{match.host_team}}</p>
-    <p class="jg">Away team : {{match.away_team}}</p>
-    <p *ngIf="result"><span class="jg">Winner : {{match.result}}</span></p>
-  </mat-card-content>
-</mat-card>
-  
 
-<div class="container">
+  <mat-card class="card_wrap">
+    <h1>
+      <p class="jh">Match Detail</p>
+    </h1>
+    <div class="al">
+      <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
+        <div style="cursor:pointer" class="card">
+          <img src={{match.thumbnail}} alt="Notebook">
+        </div>
+      </div>
+      <h2 class="jgc">VS</h2>
+      <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="0.5%">
+        <div style="cursor:pointer" class="card">
+          <img src={{defaultImage}} alt="Notebook">
+        </div>
+      </div>
+    </div>
+    <mat-card-content>
+      <h3 style="font-weight:bold;" class="jg">{{match.location}}</h3>
+      <h3 class="jg">{{match.start_date | date}}</h3>
+      <h3 class="jg">{{match.start_time}} ~ {{match.end_time}}</h3>
+      <p class="jg">Host team : {{match.host_team}}</p>
+      <p class="jg">Away team : {{match.away_team}}</p>
+      <p *ngIf="result" class="jg">Winner : {{match.result}}</p>
+    </mat-card-content>
+  </mat-card>
+
+
+
+  <div class="container">
     <div class="form-group">
-      <textarea class="form-control status-box" rows="3" placeholder="Enter your comment here..."  [(ngModel)]="contents" ></textarea>
+      <textarea class="form-control status-box" rows="3" placeholder="Enter your comment here..." [(ngModel)]="contents"></textarea>
     </div>
-  <div class="button-group pull-right">
-    <button (click)="action()" class="btn btn-primary">Post</button>
+    <div class="button-group pull-right">
+      <button (click)="action()" class="btn btn-primary">Post</button>
+    </div>
   </div>
-</div>
 
-<mat-list class="posts" *ngFor="let comment of comments">
-  <!-- <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4> -->
-  <mat-list-item class="li">{{comment.content}} - {{comment.writer}}({{comment.timestamp | date}})</mat-list-item>
-</mat-list>
+  <mat-list class="posts" *ngFor="let comment of comments">
+    <!-- <h4>작성자 : {{comment.writer}}({{comment.timestamp | date}})</h4> -->
+    <mat-list-item class="li">{{comment.content}} - {{comment.writer}}({{comment.timestamp | date}})</mat-list-item>
+  </mat-list>
 
-<div class="selectWin" *ngIf="condition">
-  <mat-form-field>
-    <mat-select [(ngModel)]="selectedTeam" placeholder="승자 선택">
-      <mat-option [value]="host">
-        {{ host.name }}
-      </mat-option>
-      <mat-option [value]="away">
-        {{ away.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-raised-button (click)="changeStatus()">확인</button>
-</div>
+  <div class="selectWin" *ngIf="condition">
+    <mat-form-field>
+      <mat-select [(ngModel)]="selectedTeam" placeholder="승자 선택">
+        <mat-option [value]="host">
+          {{ host.name }}
+        </mat-option>
+        <mat-option [value]="away">
+          {{ away.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="changeStatus()">확인</button>
+  </div>
 
 </div>

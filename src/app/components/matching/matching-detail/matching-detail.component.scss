@@ -19,8 +19,14 @@
    position :relative;
  }
  .card{
-   max-width : 400px;
+   max-width : 500px;
  }
+
+.card img {
+  width:100px;
+  height:100px;
+}
+
  .al{
    display: inline-flex;
  }
@@ -28,7 +34,7 @@
   max-width : 430px;
   margin:0 auto;
   text-align : center;
-  background-image : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcnHDvsgUtYmUSzEdMK_efY15XzX1vgwETGc6M874GR4IXmthiUA");
+  background-image : url("https://firebasestorage.googleapis.com/v0/b/myteam-af335.appspot.com/o/KakaoTalk_20180609_011154707.png?alt=media&token=d51e4cb1-fefe-472f-af02-10a79046e8e3");
   background-size: cover;
   color: white;
 }
