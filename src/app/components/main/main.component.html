@@ -20,11 +20,11 @@
     <mat-card class="example-card" fxFlex="33%">
         <mat-card-header>
             <mat-card-title>
-                <h2>
+                <h3>
                     <p class="jg"> 최근 올라온 매치
                         <i class="material-icons">assistant_photo</i>
                     </p>
-                </h2>
+                </h3>
             </mat-card-title>
             <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
@@ -64,24 +64,24 @@
     <mat-card class="example-card" fxFlex="33%">
         <mat-card-header>
             <mat-card-title>
-                <h2>
+                <h3>
                     <p class="jg"> 팀순위</p>
-                </h2>
+                </h3>
             </mat-card-title>
             <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <mat-table [dataSource]="ranks">
                 <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef> 팀 이름</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> <p class="jg"> 팀 이름</p></mat-header-cell>
                     <mat-cell *matCellDef="let element">
                         <img src="{{element.thumbnail}}" mat-card-avatar>
                         <span class="ngc"> {{element.name}}</span>
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="win">
-                    <mat-header-cell *matHeaderCellDef> 순위 </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell>
+                    <mat-header-cell *matHeaderCellDef><p class="jg">  순위</p> </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> <p class="ngc">{{element.win}}</p> </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="rankDisplayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: rankDisplayedColumns;"></mat-row>
@@ -97,22 +97,22 @@
     <mat-card class="example-card" fxFlex="33%">
         <mat-card-header>
             <mat-card-title>
-                <h2>
+                <h3>
                     <p class="jg"> 공지사항</p>
-                </h2>
+                </h3>
             </mat-card-title>
             <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <mat-table class="notice" [dataSource]="notices">
                 <ng-container matColumnDef="title">
-                    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> <p class="jg"> Title </p></mat-header-cell>
                     <mat-cell *matCellDef="let element">
                         <span class="ngc">{{element.data.title}}</span>
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="timestamp">
-                    <mat-header-cell *matHeaderCellDef> 일시 </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> <p class="jg"> 일시</p> </mat-header-cell>
                     <mat-cell *matCellDef="let element">
                         <p class="ngc">{{element.data.timestamp | date}}</p>
                     </mat-cell>

@@ -47,7 +47,12 @@ $margin-promotion-sections-small: 15px;
     color:#ffff;
   }
 }
-
+h3 > .jg{
+  font-size: 18px;
+}
+.ngc{
+  font-size: 11px;
+}
 .docs-homepage-promo {
   align-items: center;
   display: flex;
@@ -69,7 +74,12 @@ $margin-promotion-sections-small: 15px;
     padding: 0;
   }
 }
-
+h2 {
+  font-size: 20px;
+  font-weight: 350;
+  margin: 0 0 16px 0;
+  padding: 0;
+}
 
 .docs-homepage-row {
   display: flex;

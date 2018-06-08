@@ -18,33 +18,33 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 팀 순위 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header><p class="jg">팀 순위</p>  </mat-header-cell>
+      <mat-cell *matCellDef="let element"><p class="ngc"> {{element.position}}</p> </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 팀명 </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> <p class="jg">팀명</p> </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <img src="{{element.thumbnail}}" mat-card-avatar> {{element.name}}
+        <p class="ngc"><img src="{{element.thumbnail}}" mat-card-avatar> {{element.name}}</p>
       </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="match_num">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 경기수 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.match_num}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header><p class="jg">경기수 </p></mat-header-cell>
+      <mat-cell *matCellDef="let element"> <p class="ngc">{{element.match_num}} </p></mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="win">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 승 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.win}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> <p class="jg">승</p> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <p class="ngc">{{element.win}} </p></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lose">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> 패 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.lose}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> <p class="jg">패</p> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <p class="ngc"> {{element.lose}}</p> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

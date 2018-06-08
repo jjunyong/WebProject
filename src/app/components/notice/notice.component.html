@@ -17,17 +17,17 @@
 
 
 <div class="example-card">
-  <h2>공지사항</h2>
+  <h2><p class="jg">공지사항</p></h2>
   <mat-table [dataSource]="notices">
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>  <span class="jg">Title</span> </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <a href="/notice/{{element.id}}">{{element.data.title}}</a>
+        <a href="/notice/{{element.id}}"> <span class="ngc">{{element.data.title}}</span></a>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="timestamp">
-      <mat-header-cell *matHeaderCellDef> TimeStamp </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.data.timestamp | date}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef>  <span class="jg">TimeStamp</span></mat-header-cell>
+      <mat-cell *matCellDef="let element"> <span class="ngc">{{element.data.timestamp | date}} </span></mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

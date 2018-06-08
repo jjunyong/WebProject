@@ -25,11 +25,11 @@
             <div routerLink="/matchingDetail/{{match.id}}">
                 <img src={{match.data.image}} alt="Notebook" style="width:100%">
                 <div class="content">
-                    <h4>Match Info</h4>
-                    <p>Host 팀 : {{match.data.host_team}} </p>
-                    <p>매치 날짜 : {{match.data.start_date | date }}</p>
-                    <p>매치 시간 : {{match.data.start_time}} ~ {{match.data.end_time}}</p>
-                    <p>장소 : {{match.data.location}}</p>
+                    <h4><p class="hn"> Match Info</p></h4>
+                    <p class="jg"><i class="material-icons">people</i> : {{match.data.host_team}} </p>
+                    <p class="jg"><i class="material-icons">calendar_today</i> : {{match.data.start_date | date }}</p>
+                    <p class="jg"><i class="material-icons">access_time</i>  : {{match.data.start_time}} ~ {{match.data.end_time}}</p>
+                    <p class="jg"> <i class="material-icons">location_on</i>  : {{match.data.location}}</p>
                 </div>
             </div>
         </div>
