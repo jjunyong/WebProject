@@ -46,6 +46,7 @@ export class MatchingComponent implements OnInit {
         });
       }).subscribe((data) => {
         this.matches = data;
+        // console.log(this.matches);
         // console.log(data);
         // this.afs.collection('teams').doc(this.matches.data.tid).valueChanges()
         //   .subscribe((team : any)=>{
