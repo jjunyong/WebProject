@@ -1,0 +1,33 @@
+import * as admin from 'firebase-admin'
+import * as functions from 'firebase-functions'
+import * as nodemailer from 'nodemailer'
+
+admin.initializeApp(functions.config().firebase);
+const gmailEmail = encodeURIComponent(functions.config().gmail.email);
+const gmailPassword = encodeURIComponent(functions.config().gmail.password);
+const mailTransport = nodemailer.createTransport(
+    `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
+const APP_NAME = '한동 매칭';
+
+//매치 성사시 신청한 사람에게 이메일
+
+
+//매치 신청시 호스트에게 이메일
+export const matchRequestEmail =
+    functions.firestore.document(`users/{UserId}`)
+        .onUpdate((snap, context) => {
+            const user = snap.after.data();
+
+            const mailOptions = {
+                from: `${APP_NAME} <hdaution@gmail.com>`,
+                to: user.email,
+                subject: `New challenge to your team!`,
+                text: ` ${user.displayName}! 당신의 팀에 새로운 도전자가 등장하였습니다.
+                접속하여 수락 또는 거부하여주세요.
+                        -from ${APP_NAME}.`
+            };
+
+            return mailTransport.sendMail(mailOptions).then(() => {
+                console.log(`matchRequestEmail sent to ${user.email}`);
+            });
+        });
