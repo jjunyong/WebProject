@@ -1,6 +1,10 @@
+<!-- <video autoplay muted loop id="myVideo">
+  <source src="../../assets/FIFA.mp4" type="video/mp4">
+</video> -->
+
 <h1 class="mat-h1"></h1>
 <div class="flex-container">
-  <div *ngFor="let team of teams">
+  <div *ngFor="let team of teams"> 
     <mat-card class="example-card">
       <mat-card-header>
         <img mat-card-avatar src="{{team.thumbnail}}" alt="Photo of a team">
@@ -8,16 +12,21 @@
         <mat-card-title>{{team.name}}</mat-card-title>
         <mat-card-subtitle>승률: {{team.win}}/{{team.match_num}} </mat-card-subtitle>
       </mat-card-header>
-
+   
+      <img mat-card-image src="{{team.image}}" alt="Photo of my team">
+      
       <mat-card-content>
-
       </mat-card-content>
       <mat-card-actions>
-        <button routerLink="/teamDetail/{{team.tid}}" mat-button color="primary">Edit</button>
-
+        <div>
+        <button routerLink="/teamDetail/{{team.tid}}" mat-button color="primary"><i class="material-icons">group_add</i> </button>
+        <button  routerLink="/teamEdit/{{team.tid}}" mat-button color="primary"><i class="material-icons">edit</i></button>
+        <button  (click)="deleteTeam(team)"mat-button color="primary"><i class="material-icons">delete</i></button>
+      </div>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
 
-<button routerLink="/createTeam" mat-fab color="primary"> + </button>
+<button routerLink="/createTeam" mat-fab color="primary"><i class="material-icons">playlist_add</i>  </button>
+

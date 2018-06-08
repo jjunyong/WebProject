@@ -49,6 +49,7 @@ export class TeamService {
       tid: id,
       name: team.name,
       thumbnail: team.thumbnail,
+      image: team.image,
       lose: 0,
       win: 0,
       match_num: 0

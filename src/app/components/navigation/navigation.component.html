@@ -9,11 +9,11 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.lt-md>
     <div fxLayout fxLayoutGap="10px" class="navigation-items">
-      <a mat-button routerLink="/main">Home</a>
-      <a mat-button routerLink="/rank">기록/순위</a>
-      <a mat-button routerLink="/matching">Matching</a>
-      <a mat-button routerLink="notice">공지사항</a>
-      <a *ngIf="auth.isLoggedIn()" mat-button routerLink="/myteam">My Team</a>
+      <a mat-button routerLink="/main"><i class="material-icons">home</i> </a>
+      <a mat-button routerLink="/rank"><i class="material-icons">equalizer</i></a>
+      <a mat-button routerLink="/matching"><i class="material-icons">group</i>vs<i class="material-icons">group</i></a>
+      <a mat-button routerLink="notice"><i class="material-icons">assignment</i></a>
+      <a *ngIf="auth.isLoggedIn()" mat-button routerLink="/myteam"><i class="material-icons">person_pin</i></a>
       <a *ngIf="!auth.isLoggedIn()" mat-button routerLink="/login">Login</a>
       <a *ngIf="auth.isLoggedIn()" style="cursor: pointer" mat-button (click)="auth.logout()">Logout</a>
       <mat-icon *ngIf="auth.isLoggedIn()" style="cursor: pointer" (click)="pop()">notifications_active</mat-icon>

@@ -11,6 +11,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 class team{
   name : string;
   thumbnail : string;
+  image : string;
 }
 
 @Component({
@@ -39,7 +40,8 @@ export class CreateTeamComponent implements OnInit {
     public auth : AngularFireAuth
   ) { 
     this.team = new team();
-    this.team.thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17S8FqgC7DAX3iNKr2T9NIV3b50hJUnjfABI63MEjTymxMCpRRw";
+    this.team.thumbnail = "https://cdn3.iconfinder.com/data/icons/soccer-14/33/soccer_team-512.png";
+    this.team.image = "http://img.etoday.co.kr/pto_db/2017/09/20170901085445_1120007_540_346.jpg";
     this.currentUid = this.auth.auth.currentUser.uid;
   }
 
@@ -47,8 +49,8 @@ export class CreateTeamComponent implements OnInit {
   }
 
   goBack(){
-    if(this.team.thumbnail == ""){
-      throw new Error("no image for a hero!")
+    if(this.team.thumbnail == "" && this.team.image == ""){
+      throw new Error("no image for your team!")
     }
     this.teamService.addTeam(this.team, this.currentUid);
     this.location.back();

@@ -21,5 +21,9 @@
 <div *ngIf="(snapshot | async) as snap">
   {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
 </div> -->
-
+<div>
+  <label>Image:
+    <input [(ngModel)]="team.image" placeholder="imgURL" />
+  </label>
+</div>
 <button mat-raised-button (click)="goBack()" color="primary"> ADD</button>

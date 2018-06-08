@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 import { TeamService } from '../../services/team.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material';
+import { AngularFirestore } from 'angularfire2/firestore';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -15,7 +19,10 @@ export class MyteamComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private teamService: TeamService
+    private teamService: TeamService,    
+    public snackBar: MatSnackBar,
+    public afs : AngularFirestore,
+    public dialog: MatDialog
   ) {
     this.curerntUser = this.auth.userDetails;
   }
@@ -48,5 +55,23 @@ export class MyteamComponent implements OnInit {
 
       });
   }
+// openDialog(team){
 
+    
+
+//   }
+// 
+    // this.afs.collection('teams').doc(team.tid).delete().then();
+    // this.afs.collection('users').doc(this.curerntUser.uid).collection('teams').doc(team.tid).delete().then();
+  
+    
+  deleteTeam(team){
+    this.snackBar.open("delete!","are you tanos?..ㅠㅠ    ",{
+      duration: 3000,
+    })
+  
+    console.log(team);
+    this.afs.collection('teams').doc(team.tid).delete().then();
+    this.afs.collection('users').doc(this.curerntUser.uid).collection('teams').doc(team.tid).delete().then();
+  }
 }

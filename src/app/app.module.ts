@@ -39,7 +39,8 @@ import { MyteamComponent } from './components/myteam/myteam.component';
 import { CreateTeamComponent } from './components/myteam/create-team/create-team.component';
 import { TeamDetailComponent } from './components/myteam/team-detail/team-detail.component';
 import { TeamService } from './services/team.service';
-import { DialogOverviewExampleDialog } from './components/navigation/navigation.component'
+import { DialogOverviewExampleDialog } from './components/navigation/navigation.component';
+import { TeamEditComponent } from './components/myteam/team-edit/team-edit.component'
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DialogOverviewExampleDialog } from './components/navigation/navigation.
     TeamDetailComponent,
     DialogOverviewExampleDialog,
     DialogOverviewExampleDialog2,
+    TeamEditComponent,
   ],
   imports: [
     BrowserModule,
