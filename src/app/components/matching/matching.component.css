@@ -63,3 +63,7 @@ mat-select::-ms-expand {
     width: 100%;
     padding: 20px;   
 }
+
+.material-icons {
+    vertical-align:middle;
+}

@@ -20,7 +20,7 @@ body {
   font-family: 'Nanum Gothic', 'Jeju Gothic', sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6,p {
+h1,h2,h3,h4,h5,h6,body, table, div, p {
   font-family: 'Nanum Gothic', monospace;
 }
 

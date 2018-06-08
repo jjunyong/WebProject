@@ -18,12 +18,13 @@ export class NavigationComponent implements OnInit {
   info;
   currentUser;
   temp;
+  away;
 
   constructor(public auth: AuthService,
     public dialog: MatDialog,
     public teamService: TeamService,
     public afAuth: AngularFireAuth,
-    public afs:AngularFirestore) {
+    public afs: AngularFirestore) {
     this.currentUser;
   }
 
@@ -43,35 +44,37 @@ export class NavigationComponent implements OnInit {
       // data : this.info
     })
 
-    dialogRef.afterClosed().subscribe(result=>{
-     
+    dialogRef.afterClosed().subscribe(result => {
+
       this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
-      .subscribe((data) => {
-        this.info = data;
+        .subscribe((data) => {
+          this.info = data;
 
-        if(result){//신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함. 
+          if (result) {//신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함. 
 
-          console.log(this.info.matchRequestFrom);
-          let away = new team();
-          this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
-            .subscribe((team)=>{
-              away = team as team;
+            console.log(this.info.matchRequestFrom);
+            // let away = new team();
+            this.afs.collection('teams').doc(this.info.matchRequestFrom).ref.get()
+              .then((team) => {
+                this.away = team.data();
 
-              this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
-                away_team : away.name,
-                away_id: this.info.matchRequestFrom,
-                isMatched : true
+                console.log(this.away);
+
+                this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
+                  away_team: this.away.name,
+                  away_id: this.info.matchRequestFrom,
+                  isMatched: true
+                })
               })
-            })
 
-          
-        }
-        else{ 
-          console.log("거부");
-        }
-      })
 
-      
+          }
+          else {
+            console.log("거부");
+          }
+        })
+
+
     })
   }
 
@@ -103,7 +106,7 @@ export class DialogOverviewExampleDialog {
         //   })
 
         this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
-          .subscribe((team)=>{
+          .subscribe((team) => {
             this.requestTeam = team;
             console.log(this.requestTeam)
           })
