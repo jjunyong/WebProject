@@ -5,10 +5,12 @@
   .flex-container {
     display: flex;
     flex-wrap: wrap;
-    background-image:url("http://file.gamedonga.co.kr/files/2018/05/01/fifawo.jpg");
+    /* background-image:url("http://file.gamedonga.co.kr/files/2018/05/01/fifawo.jpg"); */
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcnHDvsgUtYmUSzEdMK_efY15XzX1vgwETGc6M874GR4IXmthiUA");
     background-size: 100% 100%;
     background-color: #f1f1f1;
     overflow: hidden;
+    /* opacity : 0.7; */
 
   }
   
@@ -19,9 +21,8 @@
     text-align: left;
     line-height: 30px;
     font-size: 30px;
-
-    
   }
+  
   /* .example-card {
     max-width: 400px;
     position : absolute;

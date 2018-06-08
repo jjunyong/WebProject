@@ -21,6 +21,7 @@ export class MatchingDetailComponent implements OnInit {
   away: any;
   selectedTeam;
   condition: boolean;
+  defaultImage = "https://cdn3.iconfinder.com/data/icons/soccer-14/33/soccer_team-512.png";
 
   constructor(public auth: AuthService,
     public afs: AngularFirestore, private route: ActivatedRoute,
@@ -36,7 +37,10 @@ export class MatchingDetailComponent implements OnInit {
         this.afs.collection('teams').doc(this.match.host_id).valueChanges()
           .subscribe((host) => this.host = host);
         this.afs.collection('teams').doc(this.match.away_id).valueChanges()
-          .subscribe((away) => this.away = away);
+          .subscribe((away: any) => { 
+            this.away = away
+            this.defaultImage = away.thumbnail;
+          });
 
           console.log(this.match.isMatched);
         console.log(this.match.result);
