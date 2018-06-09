@@ -14,7 +14,7 @@
                     <i class="material-icons">location_on</i> : {{match.data.location}}</p>
             </div>
         </div>
-        <div align="right">
+        <div *ngIf="auth.isLoggedIn()" align="right">
             <button *ngIf="!match.data.isMatched else other" (click)="matchRequest(match)" color="primary" mat-button>매치 신청</button>
             <ng-template #other>
                 <strong>매치완료</strong>

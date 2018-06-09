@@ -2,7 +2,8 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import 'http://fonts.googleapis.com/earlyaccess/nanumpenscript.css';
+
+/* @import 'http://fonts.googleapis.com/earlyaccess/nanumpenscript.css';
 @import 'http://fonts.googleapis.com/earlyaccess/jejugothic.css';
 @import 'http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css';
 @import 'http://fonts.googleapis.com/earlyaccess/kopubbatang.css';
@@ -12,16 +13,16 @@
 @import 'http://fonts.googleapis.com/earlyaccess/nanumgothic.css';
 @import 'http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css';
 @import 'http://fonts.googleapis.com/earlyaccess/jejuhallasan.css';
-@import 'http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css';
+@import 'http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css'; */
 
 
 body {
   margin: 0;
-  font-family: 'Nanum Gothic', 'Jeju Gothic', sans-serif;
+  font-family: 'Jeju Gothic','Nanum Gothic', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6,body, table, div, p {
-  font-family: 'Nanum Gothic', monospace;
+  font-family: 'Jeju Gothic','Nanum Gothic', monospace;
 }
 
 .np {
