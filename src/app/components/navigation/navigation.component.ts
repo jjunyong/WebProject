@@ -65,12 +65,22 @@ export class NavigationComponent implements OnInit {
                   away_id: this.info.matchRequestFrom,
                   isMatched: true
                 })
+
+                this.afs.collection('users').doc(this.info.uid).update({
+                  matchRequestFrom: '',
+                  matchRequestMatch: ''
+                })
               })
 
 
           }
           else {
             console.log("거부");
+
+            this.afs.collection('users').doc(this.info.uid).update({
+              matchRequestFrom: '',
+              matchRequestMatch: ''
+            })
           }
         })
 
@@ -96,8 +106,8 @@ export class DialogOverviewExampleDialog {
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
-      .subscribe((data) => {
-        this.info = data;
+      .subscribe((currentUser) => {
+        this.info = currentUser
         // console.log(this.info)
 
         // this.afs.collection('users').doc(this.info.matchRequestFrom).valueChanges()

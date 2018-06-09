@@ -26,7 +26,8 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> <p class="jg">팀명</p> </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <p class="ngc"><img src="{{element.thumbnail}}" mat-card-avatar> {{element.name}}</p>
+        <img src="{{element.thumbnail}}" mat-card-avatar>
+        <p class="ngc"> {{element.name}}</p>
       </mat-cell>
     </ng-container>
 

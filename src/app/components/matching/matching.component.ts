@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { MatchService } from '../../services/match.service';
@@ -84,13 +84,16 @@ export class MatchingComponent implements OnInit {
   templateUrl: 'test.html',
 })
 // tslint:disable-next-line:component-class-suffix
-export class DialogOverviewExampleDialog2 {
+export class DialogOverviewExampleDialog2 implements OnDestroy{
 
+  
   teamControl = new FormControl('', [Validators.required]);
   selectedTeam: any;
   myTeams = new Array();
   id;
   match;
+  observe
+
   constructor(private auth: AuthService,
     private teamService: TeamService,
     private afs: AngularFirestore,
@@ -127,7 +130,7 @@ export class DialogOverviewExampleDialog2 {
   request() {
     console.log(this.selectedTeam);
 
-    this.afs.collection('matches').doc(this.data.id).valueChanges()
+    this.observe = this.afs.collection('matches').doc(this.data.id).valueChanges()
       .subscribe((data) => {
         console.log(data);
         this.match = data;
@@ -144,6 +147,10 @@ export class DialogOverviewExampleDialog2 {
             );
           });
       });
+  }
+
+  ngOnDestroy(): void {
+    this.observe.unsubscribe();
   }
 
 
