@@ -7,6 +7,6 @@
     </mat-dialog-content>
     <mat-dialog-actions>
         <button mat-button [mat-dialog-close]="true" cdkFocusInitial>수락</button>
-        <button mat-button mat-dialog-close>거부</button>
+        <button mat-button (click)="onNoClick()">거부</button>
     </mat-dialog-actions>
 </div>

@@ -34,7 +34,6 @@ export class NavigationComponent implements OnInit {
   }
 
   pop() {
-    // this.currentUser = this.afAuth.auth.currentUser.uid;
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '300px',
       // height: '300px',
@@ -48,10 +47,11 @@ export class NavigationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
+
       if (result) {// 신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함
 
         console.log(this.info.matchRequestFrom);
-        // let away = new team();
+
         this.afs.collection('teams').doc(this.info.matchRequestFrom).ref.get()
           .then((team) => {
             this.away = team.data();
@@ -70,12 +70,7 @@ export class NavigationComponent implements OnInit {
             });
           });
       } else {
-        console.log('거부');
-
-        this.afs.collection('users').doc(this.info.uid).update({
-          matchRequestFrom: '',
-          matchRequestMatch: ''
-        });
+        console.log('무시');
       }
     });
   }
@@ -94,17 +89,13 @@ export class DialogOverviewExampleDialog {
     private teamService: TeamService,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
       .subscribe((currentUser) => {
         this.info = currentUser;
-        // console.log(this.info)
 
-        // this.afs.collection('users').doc(this.info.matchRequestFrom).valueChanges()
-        //   .subscribe((data) => {
-        //     this.requestTeam = data;
-        //   })
         if (this.info.matchRequestFrom !== '') {
           this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
             .subscribe((team) => {
@@ -113,6 +104,15 @@ export class DialogOverviewExampleDialog {
             });
         }
       });
+  }
+
+  onNoClick(): void {
+    this.afs.collection('users').doc(this.info.uid).update({
+      matchRequestFrom: '',
+      matchRequestMatch: ''
+    });
+
+    this.dialogRef.close();
   }
 }
 
