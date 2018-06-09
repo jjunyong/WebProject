@@ -4,8 +4,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TeamService } from '../../services/team.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { team } from '../../team';
-
 
 @Component({
   selector: 'app-navigation',
@@ -25,69 +23,62 @@ export class NavigationComponent implements OnInit {
     public teamService: TeamService,
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore) {
-    this.currentUser;
+
   }
 
   ngOnInit() {
-
-
   }
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
   }
+
   pop() {
     // this.currentUser = this.afAuth.auth.currentUser.uid;
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '300px',
       // height: '300px',
       // data : this.info
-    })
+    });
+
+    this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
+      .subscribe((data) => {
+        this.info = data;
+      });
 
     dialogRef.afterClosed().subscribe(result => {
 
-      this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
-        .subscribe((data) => {
-          this.info = data;
+      if (result) {// 신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함
 
-          if (result) {//신청이 들어온 해당 매치의 isMatched를 바꾸어주어야 함. 
+        console.log(this.info.matchRequestFrom);
+        // let away = new team();
+        this.afs.collection('teams').doc(this.info.matchRequestFrom).ref.get()
+          .then((team) => {
+            this.away = team.data();
 
-            console.log(this.info.matchRequestFrom);
-            // let away = new team();
-            this.afs.collection('teams').doc(this.info.matchRequestFrom).ref.get()
-              .then((team) => {
-                this.away = team.data();
+            console.log(this.away);
 
-                console.log(this.away);
-
-                this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
-                  away_team: this.away.name,
-                  away_id: this.info.matchRequestFrom,
-                  isMatched: true
-                })
-
-                this.afs.collection('users').doc(this.info.uid).update({
-                  matchRequestFrom: '',
-                  matchRequestMatch: ''
-                })
-              })
-
-
-          }
-          else {
-            console.log("거부");
+            this.afs.collection('matches').doc(this.info.matchRequestMatch).update({
+              away_team: this.away.name,
+              away_id: this.info.matchRequestFrom,
+              isMatched: true
+            });
 
             this.afs.collection('users').doc(this.info.uid).update({
               matchRequestFrom: '',
               matchRequestMatch: ''
-            })
-          }
-        })
+            });
+          });
+      } else {
+        console.log('거부');
 
-
-    })
+        this.afs.collection('users').doc(this.info.uid).update({
+          matchRequestFrom: '',
+          matchRequestMatch: ''
+        });
+      }
+    });
   }
-
 }
 
 @Component({
@@ -107,23 +98,21 @@ export class DialogOverviewExampleDialog {
 
     this.teamService.getRequest(this.afAuth.auth.currentUser.uid)
       .subscribe((currentUser) => {
-        this.info = currentUser
+        this.info = currentUser;
         // console.log(this.info)
 
         // this.afs.collection('users').doc(this.info.matchRequestFrom).valueChanges()
         //   .subscribe((data) => {
         //     this.requestTeam = data;
         //   })
-
-        this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
-          .subscribe((team) => {
-            this.requestTeam = team;
-            console.log(this.requestTeam)
-          })
-      })
-
-
-
+        if (this.info.matchRequestFrom !== '') {
+          this.afs.collection('teams').doc(this.info.matchRequestFrom).valueChanges()
+            .subscribe((team) => {
+              this.requestTeam = team;
+              console.log(this.requestTeam);
+            });
+        }
+      });
   }
 }
 

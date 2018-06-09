@@ -1,10 +1,12 @@
-<h2 mat-dialog-title></h2>
-<mat-dialog-content>
-<p>
-    {{requestTeam.name}}로부터 매치신청이 들어왔습니다.
-</p>
-</mat-dialog-content>
-<mat-dialog-actions>
+<div *ngIf="requestTeam">
+    <h2 mat-dialog-title></h2>
+    <mat-dialog-content>
+        <p>
+            {{requestTeam.name}}로부터 매치신청이 들어왔습니다.
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
         <button mat-button [mat-dialog-close]="true" cdkFocusInitial>수락</button>
         <button mat-button mat-dialog-close>거부</button>
-</mat-dialog-actions>
+    </mat-dialog-actions>
+</div>
